@@ -1,8 +1,24 @@
 .landing {
 	color: white;
 	display: flex;
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
 	.cta {
 		flex: 4;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		z-index: 100;
+		flex-direction: column;
+		h1 {
+			font-family: "Nunito Sans", sans-serif;
+			font-size: 4rem;
+		}
+		p {
+			margin-top: 16px;
+			font-size: 1.25rem;
+		}
 	}
 	.illustration {
 		flex: 6;
@@ -13,5 +29,6 @@
 			width: 100%;
 			height: auto;
 		}
+		z-index: 100;
 	}
 }
