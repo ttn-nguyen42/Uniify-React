@@ -6,10 +6,8 @@ import { Fragment } from "react";
 const App = () => {
 	return (
 		<Fragment>
-			<main>
-				<Navigation />
-				<Routing />
-			</main>
+			<Navigation />
+			<Routing />
 		</Fragment>
 	);
 };
