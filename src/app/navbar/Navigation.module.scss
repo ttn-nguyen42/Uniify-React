@@ -1,4 +1,16 @@
 .brand {
-    font-family: "Bebas Neue", cursive;
-    font-size: 1.75rem !important;
+	font-family: "Bebas Neue", cursive;
+	font-size: 2rem !important;
+}
+
+.navbar {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: 8px 10%;
+	flex-direction: start;
+    @media (max-width: 768px) {
+        margin: 8px 8%
+    }
 }

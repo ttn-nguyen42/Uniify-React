@@ -7,9 +7,11 @@ import Landing from "../../pages/landing/Landing";
 
 import { Switch, Route } from "react-router";
 
+import style from "./Routing.module.scss";
+
 const Routing = () => {
 	return (
-		<main>
+		<main className={style.main}>
 			<Switch>
 				<Route path="/" exact>
 					<Landing />

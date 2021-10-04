@@ -1,3 +1,17 @@
 .landing {
-    color: white;
+	color: white;
+	display: flex;
+	.cta {
+		flex: 4;
+	}
+	.illustration {
+		flex: 6;
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		svg {
+			width: 100%;
+			height: auto;
+		}
+	}
 }
