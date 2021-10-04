@@ -13,7 +13,7 @@ const Navigation = () => {
 				<Navbar.Brand className={style.brand} as={NavLink} to="/">
 					Uniify
 				</Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbar" />
+				<Navbar.Toggle aria-controls="navbar" />
 				<Navbar.Collapse id="navbar">
 					<Nav className="ms-auto">
 						<Nav.Link as={NavLink} to="/explore">
@@ -30,7 +30,13 @@ const Navigation = () => {
 						</Nav.Link>
 					</Nav>
 					<Nav className="ms-md-5">
-						<Nav.Link className="me-md-2">Đăng nhập</Nav.Link>
+						<Nav.Link
+							as={NavLink}
+							to="/auth/login"
+							className="me-md-2"
+						>
+							Đăng nhập
+						</Nav.Link>
 						<SignUpNavbarButton />
 					</Nav>
 				</Navbar.Collapse>

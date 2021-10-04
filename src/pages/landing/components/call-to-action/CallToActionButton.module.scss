@@ -1,0 +1,21 @@
+.cta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 16px;
+    .button {
+        margin-right: 16px;
+    }
+    width: 100%;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        .button {
+            margin-right: 0;
+            margin-bottom: 16px;
+            width: 100%;
+        }   
+        .button2 {
+            width: 100%;
+        }
+    }
+}

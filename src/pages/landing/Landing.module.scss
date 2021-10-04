@@ -2,7 +2,10 @@
 	color: white;
 	display: flex;
 	@media (max-width: 768px) {
-		flex-direction: column;
+		flex-direction: column-reverse;
+        .illustration {
+            margin-bottom: 2rem;
+        }
 	}
 	.cta {
 		flex: 4;
