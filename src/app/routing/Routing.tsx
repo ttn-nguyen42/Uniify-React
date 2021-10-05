@@ -28,7 +28,7 @@ const Routing = () => {
 				<Route path="/dashboard" exact>
 					<Dashboard />
 				</Route>
-				<Route path="/info/id=:id">
+				<Route path="/explore/id=:id">
 					<SchoolInfo />
 				</Route>
 			</Switch>
