@@ -8,6 +8,8 @@ import { RecommendedCardType } from "../../../util/types/Type";
 
 import { useHistory } from "react-router";
 
+import "swiper/swiper.scss";
+
 const RecommendedCard: React.FC<RecommendedCardType> = (props) => {
 	const history = useHistory();
 	const info = props.info;

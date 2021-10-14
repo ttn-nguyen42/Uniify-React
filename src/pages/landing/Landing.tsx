@@ -6,6 +6,27 @@ import { ReactComponent as EducationSVG } from "../../assets/svg/education.svg";
 import CallToActionButton from "./components/call-to-action/CallToActionButton";
 import Featured from "./components/featured/Featured";
 
+const dummyList = [
+	{
+		name: "Đại học Bách khoa TP.HCM",
+		englishName: "Ho Chi Minh University of Technology",
+		rating: 5,
+		numberOfRating: 240,
+		shortLocation: "Quận 10, TP.HCM",
+		imageUrl: "https://via.placeholder.com/500",
+		id: "bhbwrhbeber",
+	},
+	{
+		name: "Đại học Bách khoa TP.HCM",
+		englishName: "Ho Chi Minh University of Technology",
+		rating: 5,
+		numberOfRating: 240,
+		shortLocation: "Quận 10, TP.HCM",
+		imageUrl: "https://via.placeholder.com/500",
+		id: "bhbwrhbeber",
+	},
+];
+
 const Landing = () => {
 	return (
 		<Fragment>
@@ -23,7 +44,18 @@ const Landing = () => {
 					<EducationSVG />
 				</div>
 			</div>
-			<Featured />
+			<Featured
+				type={{
+					heading: "Được giới thiệu",
+					subheading: "Các trường được Uniify giới thiệu",
+					badge: {
+						enable: true,
+						content: "Quảng cáo",
+						variant: "warning",
+					},
+					itemList: dummyList,
+				}}
+			/>
 		</Fragment>
 	);
 };

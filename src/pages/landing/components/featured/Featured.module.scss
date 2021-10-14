@@ -8,7 +8,7 @@
             color: #848484;
         }
     }
-    .carousel {
-        height: 500px;
+    :global(.swiper-slide) {
+        width: auto;
     }
 }

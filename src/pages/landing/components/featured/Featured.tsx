@@ -2,79 +2,42 @@ import style from "./Featured.module.scss";
 
 import Badge from "react-bootstrap/Badge";
 import RecommendedCard from "../../../../components/cards/recommended/RecommendedCard";
-import CarouselSlider from "../carousel/CarouselSlider";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-const Featured = () => {
+import "swiper/swiper.scss";
+
+import { FeatureProps } from "../../../../util/types/Interface";
+import { MinimalCardType } from "../../../../util/types/Type";
+
+const Featured: React.FC<FeatureProps> = (props) => {
+	const feature = props.type;
+	const objectList = feature.itemList.map((item: MinimalCardType) => (
+		<SwiperSlide>
+			<RecommendedCard info={item} />
+		</SwiperSlide>
+	));
+
 	return (
 		<div className={style.featured}>
 			<div className={style.header}>
-				<h3>Được đề xuất</h3>
+				<h3>{feature.heading}</h3>
 				<p>
-					<Badge bg="warning" className="me-2">
-						Quảng cáo
-					</Badge>
-					Những trường được giới thiệu bởi Uniify
+					{feature.badge.enable && (
+						<Badge bg={feature.badge.variant} className="me-2">
+							{feature.badge.content}
+						</Badge>
+					)}
+					{feature.subheading}
 				</p>
 			</div>
-			<div className={style.carousel}>
-				<CarouselSlider>
-					<RecommendedCard
-						info={{
-							name: "Đại học Bách khoa TP.HCM",
-							englishName: "Ho Chi Minh University of Technology",
-							rating: 5,
-							numberOfRating: 240,
-							shortLocation: "Quận 10, TP.HCM",
-							imageUrl: "https://via.placeholder.com/500",
-							id: "bhbwrhbeber",
-						}}
-					/>
-					<RecommendedCard
-						info={{
-							name: "Đại học Bách khoa TP.HCM",
-							englishName: "Ho Chi Minh University of Technology",
-							rating: 5,
-							numberOfRating: 240,
-							shortLocation: "Quận 10, TP.HCM",
-							imageUrl: "https://via.placeholder.com/500",
-							id: "bhbwrhbeber",
-						}}
-					/>
-					<RecommendedCard
-						info={{
-							name: "Đại học Bách khoa TP.HCM",
-							englishName: "Ho Chi Minh University of Technology",
-							rating: 5,
-							numberOfRating: 240,
-							shortLocation: "Quận 10, TP.HCM",
-							imageUrl: "https://via.placeholder.com/500",
-							id: "bhbwrhbeber",
-						}}
-					/>
-					<RecommendedCard
-						info={{
-							name: "Đại học Bách khoa TP.HCM",
-							englishName: "Ho Chi Minh University of Technology",
-							rating: 5,
-							numberOfRating: 240,
-							shortLocation: "Quận 10, TP.HCM",
-							imageUrl: "https://via.placeholder.com/500",
-							id: "bhbwrhbeber",
-						}}
-					/>
-					<RecommendedCard
-						info={{
-							name: "Đại học Bách khoa TP.HCM",
-							englishName: "Ho Chi Minh University of Technology",
-							rating: 5,
-							numberOfRating: 240,
-							shortLocation: "Quận 10, TP.HCM",
-							imageUrl: "https://via.placeholder.com/500",
-							id: "bhbwrhbeber",
-						}}
-					/>
-				</CarouselSlider>
-			</div>
+			<Swiper
+				slidesPerView={"auto"}
+				spaceBetween={20}
+				freeMode={true}
+				className="mySwiper"
+			>
+				{objectList}
+			</Swiper>
 		</div>
 	);
 };
