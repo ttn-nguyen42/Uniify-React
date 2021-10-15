@@ -28,3 +28,9 @@ export type FeaturedType = {
 	subheading: string;
 	itemList: MinimalCardType[];
 }
+
+export type CategoryType = {
+    category: string,
+    description: string,
+    id: string,
+}

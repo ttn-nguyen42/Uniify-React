@@ -1,6 +1,7 @@
 .landing {
 	color: white;
 	display: flex;
+    margin: 0 0 5% 0;
 	@media (max-width: 768px) {
 		flex-direction: column-reverse;
         .illustration {
