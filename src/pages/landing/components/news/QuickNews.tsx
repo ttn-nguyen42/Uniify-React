@@ -7,14 +7,15 @@ import QuickNewsCard from "../../../../components/cards/quick-news/QuickNewsCard
 
 const QuickNews: React.FC<QuickNewsProps> = (props) => {
 	const quickNews: QuickNewsType = props.interface;
-	const news = quickNews.news.map((news: QuickNewsCardType) => {
+	const news = quickNews.news.map((news: QuickNewsCardType, index) => {
 		return (
 			<QuickNewsCard
+				key={index}
 				title={news.title}
 				provider={news.provider}
 				imageUrl={news.imageUrl}
 				url={news.url}
-                timestamp={news.timestamp}
+				timestamp={news.timestamp}
 			/>
 		);
 	});

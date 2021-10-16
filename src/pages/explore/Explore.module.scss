@@ -1,3 +1,20 @@
 .explore {
     color: white;
+    margin: 3% 10%;
+    .header {
+        p {
+            color: #848484;
+        }
+    }
+    .explorer {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        .map {
+            flex: 4;
+        }
+        .info {
+            flex: 6;
+        }
+    }
 }

@@ -9,11 +9,16 @@ export interface CategoryProps {
 }
 
 export interface CategoryListProps {
-    list: CategoryType[],
-    heading: string,
-    description: string,
+	list: CategoryType[];
+	heading: string;
+	description: string;
 }
 
 export interface QuickNewsProps {
-    interface: QuickNewsType;
+	interface: QuickNewsType;
+}
+
+export interface MapExplorerProps {
+	setTooltip: (data: string) => void;
+    setSelectedLocation: (data: string) => void;
 }
