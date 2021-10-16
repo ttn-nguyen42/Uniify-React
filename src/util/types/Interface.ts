@@ -1,4 +1,4 @@
-import { FeaturedType, CategoryType } from "./Type";
+import { FeaturedType, CategoryType, QuickNewsType } from "./Type";
 
 export interface FeatureProps {
 	type: FeaturedType;
@@ -12,4 +12,8 @@ export interface CategoryListProps {
     list: CategoryType[],
     heading: string,
     description: string,
+}
+
+export interface QuickNewsProps {
+    interface: QuickNewsType;
 }

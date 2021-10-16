@@ -27,7 +27,7 @@ const Categories: React.FC<CategoryListProps> = (props) => {
 				slidesPerView={3}
                 slidesPerColumn={2}
                 slidesPerColumnFill="row"
-				spaceBetween={20}
+                spaceBetween={10}
 				className="mySwiper"
 			>
 				{categoryCards}

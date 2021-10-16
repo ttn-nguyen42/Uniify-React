@@ -1,5 +1,5 @@
 .category {
-	border: 2px solid white;
+	border: 1px solid rgb(78, 78, 78);
 	padding: 16px 24px;
 	display: flex;
 	flex-direction: column;
@@ -8,4 +8,7 @@
 	.description {
 		color: #848484;
 	}
+    &:hover {
+        background-color: #252525;
+    }
 }

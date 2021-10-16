@@ -1,12 +1,16 @@
+.marg {
+    margin: 3% 10%;
+}
+
 .landing {
 	color: white;
 	display: flex;
-    margin: 0 0 5% 0;
+    margin-bottom: 5%;
 	@media (max-width: 768px) {
 		flex-direction: column-reverse;
-        .illustration {
-            margin-bottom: 2rem;
-        }
+		.illustration {
+			margin-bottom: 2rem;
+		}
 	}
 	.cta {
 		flex: 4;
@@ -28,9 +32,9 @@
 		flex: 6;
 		width: 100%;
 		display: flex;
-		justify-content: flex-end;
+		justify-content: center;
 		svg {
-			width: 100%;
+			width: 75%;
 			height: auto;
 		}
 		z-index: 100;

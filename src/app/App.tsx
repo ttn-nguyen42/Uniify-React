@@ -1,5 +1,6 @@
 import Routing from "./routing/Routing";
 import Navigation from "./navbar/Navigation";
+import Footer from "./footer/Footer";
 
 import { Fragment } from "react";
 
@@ -8,6 +9,7 @@ const App = () => {
 		<Fragment>
 			<Navigation />
 			<Routing />
+            <Footer />
 		</Fragment>
 	);
 };

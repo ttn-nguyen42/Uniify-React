@@ -1,0 +1,47 @@
+.footer {
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2% 10%;
+    .footer-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2rem;
+    }
+    .info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .social {
+        color: gray;
+        font-size: 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        span {
+            margin-right: 8px;
+        }
+        .brands {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 120px;
+        }
+    }
+    .rights {
+        margin-top: 1%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1rem;
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+    }
+}

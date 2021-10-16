@@ -34,3 +34,17 @@ export type CategoryType = {
     description: string,
     id: string,
 }
+
+export type QuickNewsType = {
+    heading: string,
+    description: string,
+    news: QuickNewsCardType[],
+}
+
+export type QuickNewsCardType = {
+    title: string,
+    provider: string,
+    url: string,
+    imageUrl: string,
+    timestamp: Date,
+}
