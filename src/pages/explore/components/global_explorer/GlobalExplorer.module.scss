@@ -1,0 +1,8 @@
+@import "../../../../custom/mixins";
+
+.explorer {
+    .header {
+        @include header-style;
+        margin-bottom: 3rem;
+    }
+}

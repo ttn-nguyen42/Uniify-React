@@ -37,7 +37,7 @@ const Explore = () => {
 					</div>
 					<div className={style.info}>
 						<section className={style["info-header"]}>
-							<h1>Tại {namePunctuation}</h1>
+							<h2>Tại {namePunctuation}</h2>
 							<p>
 								Các trường Đại học tổ chức giảng dạy tại{" "}
 								{namePunctuation}

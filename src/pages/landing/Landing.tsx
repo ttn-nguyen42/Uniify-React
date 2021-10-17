@@ -66,6 +66,28 @@ const dummyListSchool = [
         category: "cntt",
 		id: "bhbwrhbeber",
 	},
+    {
+		name: "Đại học Bách khoa TP.HCM",
+		englishName: "Ho Chi Minh University of Technology",
+		rating: 5,
+		numberOfRating: 240,
+		shortLocation: "Quận 10, TP.HCM",
+        location: "hochiminh",
+		imageUrl: "https://via.placeholder.com/500",
+        category: "cntt",
+		id: "bhbwrhbeber",
+	},
+    {
+		name: "Đại học Bách khoa TP.HCM",
+		englishName: "Ho Chi Minh University of Technology",
+		rating: 5,
+		numberOfRating: 240,
+		shortLocation: "Quận 10, TP.HCM",
+        location: "hochiminh",
+		imageUrl: "https://via.placeholder.com/500",
+        category: "cntt",
+		id: "bhbwrhbeber",
+	},
 ];
 
 const dummyListCategories: CategoryType[] = [

@@ -78,7 +78,7 @@ const MapExplorer: React.FC<MapExplorerProps> = (props) => {
 											},
 											pressed: {
 												fill: "#E42",
-												stroke: "#F53",
+												color: "#F53",
 												outline: "none",
 											},
 										}}

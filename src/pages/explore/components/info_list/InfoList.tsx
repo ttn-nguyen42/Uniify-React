@@ -181,7 +181,6 @@ const InfoList: React.FC<InfoListProps> = (props) => {
 	return (
 		<div className={style.info}>
 			<div className={style.grid}>{schoolList}</div>
-			{/* <Pagination>{paginationItem}</Pagination> */}
 		</div>
 	);
 };
