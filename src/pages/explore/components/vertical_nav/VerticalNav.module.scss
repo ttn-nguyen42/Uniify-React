@@ -1,0 +1,19 @@
+.explorer {
+	:global(.nav) {
+		:global(.nav-item) {
+			:global(.active) {
+				background-color: #ffc107 !important;
+				color: #000000 !important;
+			}
+		}
+	}
+	:global(.nav) {
+		:global(.nav-item) {
+			a {
+				color: white;
+                cursor: pointer;
+                margin: 0.25rem 0;
+			}
+		}
+	}
+}

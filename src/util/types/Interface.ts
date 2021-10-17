@@ -1,4 +1,4 @@
-import { FeaturedType, CategoryType, QuickNewsType } from "./Type";
+import { FeaturedType, CategoryType, QuickNewsType, MinimalCardType } from "./Type";
 
 export interface FeatureProps {
 	type: FeaturedType;
@@ -20,4 +20,13 @@ export interface QuickNewsProps {
 
 export interface MapExplorerProps {
 	setTooltip: (data: string) => void;
+}
+
+export interface InfoListProps {
+    category: string,
+    location: string,
+}
+
+export interface ExploreCardProps {
+    info: MinimalCardType,
 }

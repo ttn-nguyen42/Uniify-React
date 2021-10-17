@@ -1,5 +1,7 @@
 export type InfoParams = {
 	id: string;
+    category: string;
+    location: string;
 };
 
 export type MinimalCardType = {
@@ -8,8 +10,10 @@ export type MinimalCardType = {
 	rating: number;
 	numberOfRating: number;
 	shortLocation: string;
+    location: string;
 	imageUrl?: string;
-	id: string;
+	category: string;
+    id: string;
 };
 
 export type RecommendedCardType = {

@@ -2,7 +2,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 import { NavLink } from "react-router-dom";
-import SignUpNavbarButton from "../../components/signup-button/SignUpNavbarButton";
+import SignUpNavbarButton from "../../components/signup_button/SignUpNavbarButton";
 
 import style from "./Navigation.module.scss";
 

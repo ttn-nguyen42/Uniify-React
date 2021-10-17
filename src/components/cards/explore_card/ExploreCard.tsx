@@ -1,25 +1,26 @@
-import style from "./RecommendedCard.module.scss";
+import style from "./ExploreCard.module.scss";
+
+import { RatingView } from "react-simple-star-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
-import { RatingView } from "react-simple-star-rating";
-
-import { RecommendedCardType } from "../../../util/types/Type";
-
 import { useHistory } from "react-router";
 
-import "swiper/swiper.scss";
+import { ExploreCardProps } from "../../../util/types/Interface";
 
-const RecommendedCard: React.FC<RecommendedCardType> = (props) => {
-	const history = useHistory();
+const ExploreCard: React.FC<ExploreCardProps> = (props) => {
 	const info = props.info;
+
+	const history = useHistory();
+
 	const imageClickHandler = () => {
 		history.push(
 			`/explore/${info.category}/${info.location}/${info.id}`
 		);
 	};
+
 	return (
-		<div className={style.recommended}>
+		<div className={style.card}>
 			<div className={style.image}>
 				<img
 					src={info.imageUrl}
@@ -35,6 +36,7 @@ const RecommendedCard: React.FC<RecommendedCardType> = (props) => {
 						ratingValue={info.rating}
 						className={style.icon}
 						emptyColor="#383838"
+                        size={15}
 					/>
 					<span className={style.number}>
 						({info.numberOfRating} đánh giá)
@@ -49,4 +51,4 @@ const RecommendedCard: React.FC<RecommendedCardType> = (props) => {
 	);
 };
 
-export default RecommendedCard;
+export default ExploreCard;

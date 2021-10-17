@@ -1,0 +1,27 @@
+.info {
+	width: 100%;
+	height: 60rem;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding-right: 8px;
+	.grid {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: repeat(auto-fill, minmax(185px, 300fr));
+	}
+	:global(.pagination) {
+		:global(.page-item) {
+			:global(.page-link) {
+				background-color: black !important;
+				color: white !important;
+				border-color: orange !important;
+			}
+		}
+		:global(.active) {
+			:global(.page-link) {
+				background-color: orange !important;
+				color: black !important;
+			}
+		}
+	}
+}
