@@ -1,12 +1,12 @@
+@import "../../../../custom/mixins";
+
 .news {
 	width: 100%;
 	height: auto;
 	color: white;
 	margin-top: 65.31px;
 	.header {
-		p {
-			color: #848484;
-		}
+		@include header-style;
 	}
 	.news-section {
 		display: grid;

@@ -1,4 +1,4 @@
-import VietnamGeodata from "../../../assets/geodata/geodata.json";
+import VietnamGeodata from "../../../../assets/geodata/geodata.json";
 
 import {
 	ComposableMap,
@@ -7,13 +7,22 @@ import {
 	ZoomableGroup,
 } from "react-simple-maps";
 
-import { MapExplorerProps } from "../../../util/types/Interface";
+import { MapExplorerProps } from "../../../../util/types/Interface";
+
+import { useDispatch } from "react-redux";
+import {
+	updateLocation,
+	updateName,
+} from "../../../../util/state/slice/explorerSlice";
 
 const MapExplorer: React.FC<MapExplorerProps> = (props) => {
-	const { setTooltip, setSelectedLocation } = props;
+	const { setTooltip } = props;
+
+	const explorerDispatch = useDispatch();
 
 	const handleClick = (geographyData: any) => () => {
-		setSelectedLocation(geographyData.VARNAME_1);
+		explorerDispatch(updateLocation(geographyData.VARNAME_1));
+		explorerDispatch(updateName(geographyData.NAME_1));
 	};
 
 	const handleMouseEnter = (geographyData: any) => () => {

@@ -1,20 +1,30 @@
+@import "../../custom/mixins";
+
 .explore {
-    color: white;
-    margin: 3% 10%;
-    .header {
-        p {
-            color: #848484;
-        }
-    }
-    .explorer {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        .map {
-            flex: 4;
-        }
-        .info {
-            flex: 6;
-        }
-    }
+	color: white;
+	margin: 3% 10%;
+	.header {
+		@include header-style;
+	}
+	.explorer {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		.map {
+			flex: 4;
+		}
+		.info {
+			flex: 6;
+			display: flex;
+			justify-content: center;
+            align-items: flex-end;
+			flex-direction: column;
+			.info-header {
+				@include header-style;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+			}
+		}
+	}
 }

@@ -1,11 +1,11 @@
+@import "../../../../custom/mixins";
+
 .featured {
 	width: 100%;
 	height: auto;
     color: white;
     .header {
-        p {
-            color: #848484;
-        }
+        @include header-style;
     }
     :global(.swiper-slide) {
         width: auto;

@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import style from "./Landing.module.scss";
 
 import { ReactComponent as EducationSVG } from "../../assets/svg/education.svg";
-import CallToActionButton from "./components/call-to-action/CallToActionButton";
+import CallToActionButton from "./components/call_to_action/CallToActionButton";
 import Featured from "./components/featured/Featured";
 import Categories from "./components/categories/Categories";
 import QuickNews from "./components/news/QuickNews";

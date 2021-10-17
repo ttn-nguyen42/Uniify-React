@@ -20,5 +20,4 @@ export interface QuickNewsProps {
 
 export interface MapExplorerProps {
 	setTooltip: (data: string) => void;
-    setSelectedLocation: (data: string) => void;
 }

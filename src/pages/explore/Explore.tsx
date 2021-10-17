@@ -1,13 +1,24 @@
 import style from "./Explore.module.scss";
-import React, { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 
-import MapExplorer from "./components/MapExplorer";
+import MapExplorer from "./components/map_explorer/MapExplorer";
+import InfoExplorer from "./components/info_explorer/InfoExplorer";
+import GlobalExplorer from "./components/global_explorer/GlobalExplorer";
+
 import ReactTooltip from "react-tooltip";
 
-const Explore = () => {
-	const [tooltip, updateTooltip] = useState<string>("");
+import { useSelector } from "react-redux";
+import { RootState } from "../../util/state/store/globalStore";
 
-	const [selectedLocation, updateLocation] = useState<string>("Ha Noi");
+const Explore = () => {
+	const explorerSelector = useSelector((state: RootState) => state.explorer);
+	const { namePunctuation, location } = explorerSelector;
+
+	useEffect(() => {
+		console.log(location);
+	}, [location]);
+
+	const [tooltip, updateTooltip] = useState<string>("");
 
 	return (
 		<Fragment>
@@ -21,16 +32,21 @@ const Explore = () => {
 				</div>
 				<section className={style.explorer}>
 					<div className={style.map}>
-						<MapExplorer
-							setTooltip={updateTooltip}
-							setSelectedLocation={updateLocation}
-						/>
+						<MapExplorer setTooltip={updateTooltip} />
 						<ReactTooltip>{tooltip}</ReactTooltip>
 					</div>
 					<div className={style.info}>
-						<h1>{selectedLocation}</h1>
+						<section className={style["info-header"]}>
+							<h1>Tại {namePunctuation}</h1>
+							<p>
+								Các trường Đại học tổ chức giảng dạy tại{" "}
+								{namePunctuation}
+							</p>
+						</section>
+                        <InfoExplorer />
 					</div>
 				</section>
+                <GlobalExplorer />
 			</section>
 		</Fragment>
 	);
