@@ -1,0 +1,21 @@
+@import "../../../../custom/mixins";
+
+.header {
+    h1 {
+        font-weight: bold;
+    }
+    @include header-style;
+    .additional {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .number {
+            margin-left: 4px;
+            color: #757575;
+            font-style: italic;
+        }
+        .divider {
+            margin: 0 0.5%;
+        }
+    }
+}

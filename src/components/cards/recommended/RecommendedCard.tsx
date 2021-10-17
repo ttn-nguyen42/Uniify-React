@@ -33,7 +33,6 @@ const RecommendedCard: React.FC<RecommendedCardType> = (props) => {
 				<div className={style.rating}>
 					<RatingView
 						ratingValue={info.rating}
-						className={style.icon}
 						emptyColor="#383838"
 					/>
 					<span className={style.number}>

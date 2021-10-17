@@ -1,0 +1,13 @@
+.positioning {
+    display: flex;
+    flex-direction: row;
+    .content {
+        margin-left: 5%;
+        display: flex;
+        flex-direction: column;
+        span {
+            color: gray;
+            font-weight: bold;
+        }
+    }
+}

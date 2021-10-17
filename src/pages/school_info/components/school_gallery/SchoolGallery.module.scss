@@ -1,0 +1,33 @@
+.image {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: row;
+	.main-image {
+		flex-wrap: wrap;
+		flex: 7;
+		object-fit: cover;
+		img {
+			width: 100%;
+			object-fit: cover;
+			aspect-ratio: 16/10;
+		}
+	}
+	.side-image {
+		flex-wrap: wrap;
+		flex: 3;
+		img {
+			object-fit: cover;
+			aspect-ratio: 48/35;
+			width: 100%;
+			height: auto;
+		}
+		.top-img {
+			padding-left: 2.5%;
+			padding-bottom: 1.25%;
+		}
+		.bottom-img {
+			padding-left: 2.5%;
+			padding-top: 1.25%;
+		}
+	}
+}
