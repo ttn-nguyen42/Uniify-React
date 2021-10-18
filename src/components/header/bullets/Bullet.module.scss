@@ -1,0 +1,10 @@
+@import "../../../custom/mixins";
+
+.bullet {
+    h5, h3 {
+        margin-top: 5%;
+    }
+    @include header-style;
+    display: flex;
+    flex-direction: column;
+}

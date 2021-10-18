@@ -1,0 +1,32 @@
+@import "../../../../custom/mixins";
+
+.apply {
+    flex: 3;
+    padding: 0 0 0 5%;
+    .floating {
+        width: 100%;
+        height: auto;
+        box-shadow: rgb(15, 15, 15) 0px 3px 8px;
+        position: sticky;
+        top: 5%;
+        padding: 5%;
+        .favorite {
+            display: flex;
+            .fav {
+                flex: 2;
+            }
+            .cont {
+                flex: 8;
+            }
+            .full-width {
+                width: 100%;
+            }
+        }
+        .details {
+            h5, h3 {
+                margin-top: 5%;
+            }
+            @include header-style;
+        }
+    }
+}

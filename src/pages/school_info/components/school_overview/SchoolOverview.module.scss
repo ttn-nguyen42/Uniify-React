@@ -1,0 +1,37 @@
+@import "../../../../custom/mixins";
+
+.overview {
+	flex: 6;
+	.carousel {
+		:global(.swiper-container) {
+			width: 100%;
+			aspect-ratio: 16/9;
+			height: auto;
+			img {
+				object-fit: cover;
+				width: 100%;
+				aspect-ratio: 16/9;
+				height: auto;
+			}
+
+			:global(.swiper-pagination-bullet-active) {
+				background-color: rgb(230, 149, 0);
+			}
+		}
+	}
+}
+
+ul {
+	list-style-type: none;
+	margin-top: 3%;
+	padding-left: 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	li {
+		margin: 1.5%;
+	}
+}
+
+.hr {
+	@include hr-style;
+}

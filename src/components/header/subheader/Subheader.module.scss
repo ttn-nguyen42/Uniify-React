@@ -1,0 +1,5 @@
+@import "../../../custom/mixins";
+
+.header {
+    @include header-style;
+}

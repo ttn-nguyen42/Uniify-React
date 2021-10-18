@@ -10,14 +10,6 @@ const SchoolHeader = () => {
 			<div className={style.additional}>
 				<RatingView ratingValue={5} emptyColor="#383838" size={20} />
 				<span className={style.number}>(247 đánh giá)</span>
-				<span className={style.divider}>•</span>
-				<span className={style.address}>
-					268 Lý Thường Kiệt, phường 12, quận 10, TP.HCM
-				</span>
-				<span className={style.divider}>•</span>
-				<span className={style.address}>
-					Khu đô thị Đại học Quốc gia TP.HCM, TP.HCM
-				</span>
 			</div>
 		</section>
 	);

@@ -1,8 +1,5 @@
 import style from "./Categories.module.scss";
 
-import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-
 import CategoryCard from "../../../../components/cards/categories/CategoryCard";
 
 import { CategoryListProps } from "../../../../util/types/Interface";
