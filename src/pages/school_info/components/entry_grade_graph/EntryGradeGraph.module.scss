@@ -1,0 +1,17 @@
+@import "../../../../custom/mixins";
+
+.graph {
+    .chart-heading {
+        margin-top: 1%;
+        @include header-style;
+    }
+    :global(.swiper-slide) {
+        width: auto;
+    }
+    :global(.swiper-button-next) {
+        color: white;
+    }
+    :global(.swiper-button-prev) {
+        color: white;
+    }
+}

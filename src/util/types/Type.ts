@@ -1,54 +1,61 @@
 export type InfoParams = {
-	id: string;
+    id: string;
     category: string;
     location: string;
 };
 
 export type MinimalCardType = {
-	name: string;
-	englishName: string;
-	rating: number;
-	numberOfRating: number;
-	shortLocation: string;
+    name: string;
+    englishName: string;
+    rating: number;
+    numberOfRating: number;
+    shortLocation: string;
     location: string;
-	imageUrl?: string;
-	category: string;
+    imageUrl?: string;
+    category: string;
     id: string;
 };
 
 export type RecommendedCardType = {
-	info: MinimalCardType;
+    info: MinimalCardType;
 };
 
 export type BadgeProps = {
-    enable: boolean,
-    variant: string,
-    content: string,    
-}
+    enable: boolean;
+    variant: string;
+    content: string;
+};
 
 export type FeaturedType = {
     heading: string;
-	badge: BadgeProps;
-	subheading: string;
-	itemList: MinimalCardType[];
-}
+    badge: BadgeProps;
+    subheading: string;
+    itemList: MinimalCardType[];
+};
 
 export type CategoryType = {
-    category: string,
-    description: string,
-    id: string,
-}
+    category: string;
+    description: string;
+    id: string;
+};
 
 export type QuickNewsType = {
-    heading: string,
-    description: string,
-    news: QuickNewsCardType[],
-}
+    heading: string;
+    description: string;
+    news: QuickNewsCardType[];
+};
 
 export type QuickNewsCardType = {
-    title: string,
-    provider: string,
-    url: string,
-    imageUrl: string,
-    timestamp: Date,
-}
+    title: string;
+    provider: string;
+    url: string;
+    imageUrl: string;
+    timestamp: Date;
+};
+
+export type GradeDataSchema = {
+    year: string;
+    thptqg: number;
+    dgnl?: number;
+    xthb?: number;
+};

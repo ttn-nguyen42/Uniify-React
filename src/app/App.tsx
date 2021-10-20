@@ -8,15 +8,15 @@ import { Provider } from "react-redux";
 import globalStore from "../util/state/store/globalStore";
 
 const App = () => {
-	return (
-		<Fragment>
-			<Navigation />
-			<Provider store={globalStore}>
-				<Routing />
-			</Provider>
-			<Footer />
-		</Fragment>
-	);
+    return (
+        <Fragment>
+            <Navigation />
+            <Provider store={globalStore}>
+                <Routing />
+            </Provider>
+            <Footer />
+        </Fragment>
+    );
 };
 
 export default App;

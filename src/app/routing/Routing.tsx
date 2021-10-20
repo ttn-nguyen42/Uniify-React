@@ -2,7 +2,7 @@ import Explore from "../../pages/explore/Explore";
 import News from "../../pages/news/News";
 import Dashboard from "../../pages/dashboard/Dashboard";
 import About from "../../pages/about/About";
-import SchoolInfo from "../../pages/school_info/School";
+import SchoolInfo from "../../pages/school_info/SchoolInfo";
 import Landing from "../../pages/landing/Landing";
 
 import { Switch, Route } from "react-router";

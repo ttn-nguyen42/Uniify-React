@@ -3,40 +3,40 @@
 }
 
 .landing {
-	color: white;
-	display: flex;
+    color: white;
+    display: flex;
     margin-bottom: 5%;
-	@media (max-width: 768px) {
-		flex-direction: column-reverse;
-		.illustration {
-			margin-bottom: 2rem;
-		}
-	}
-	.cta {
-		flex: 4;
-		display: flex;
-		justify-content: center;
-		align-items: flex-start;
-		z-index: 100;
-		flex-direction: column;
-		h1 {
-			font-family: "Nunito Sans", sans-serif;
-			font-size: 4rem;
-		}
-		p {
-			margin-top: 16px;
-			font-size: 1.25rem;
-		}
-	}
-	.illustration {
-		flex: 6;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		svg {
-			width: 75%;
-			height: auto;
-		}
-		z-index: 100;
-	}
+    @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        .illustration {
+            margin-bottom: 2rem;
+        }
+    }
+    .cta {
+        flex: 4;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        z-index: 100;
+        flex-direction: column;
+        h1 {
+            font-family: "Nunito Sans", sans-serif;
+            font-size: 4rem;
+        }
+        p {
+            margin-top: 16px;
+            font-size: 1.25rem;
+        }
+    }
+    .illustration {
+        flex: 6;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        svg {
+            width: 75%;
+            height: auto;
+        }
+        z-index: 100;
+    }
 }

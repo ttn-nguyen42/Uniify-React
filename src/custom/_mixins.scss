@@ -1,13 +1,13 @@
 @mixin header-style {
-	p,
-	span {
-		color: #848484;
-	}
+    p,
+    span {
+        color: #848484;
+    }
 }
 
 @mixin hr-style {
-	width: 100%;
-	height: 1px;
-	color: rgb(255, 255, 255);
-	margin: 5% 0;
+    width: 100%;
+    height: 1px;
+    color: rgb(255, 255, 255);
+    margin: 5% 0;
 }
