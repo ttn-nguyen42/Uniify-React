@@ -1,4 +1,4 @@
-import HeaderText from "../../../../components/header/HeaderText";
+import HeaderText from "../../../../components/header/header_text/HeaderText";
 import Subheader from "../../../../components/header/subheader/Subheader";
 import MajorPill from "../../../../components/cards/major_pill/MajorPill";
 

@@ -1,4 +1,4 @@
-import HeaderText from "../../../../components/header/HeaderText";
+import HeaderText from "../../../../components/header/header_text/HeaderText";
 import Subheader from "../../../../components/header/subheader/Subheader";
 import ListTile from "../../../../components/list_tile/ListTile";
 
@@ -39,7 +39,7 @@ const SchoolOverview = () => {
 			<img src={image} alt="HCMUT" />
 		</SwiperSlide>
 	));
-    
+
 	return (
 		<article className={style.overview}>
 			<HeaderText heading="Giới thiệu chung" desc="Tổng quan về trường" />
@@ -182,7 +182,7 @@ const SchoolOverview = () => {
 					{imageCarousel}
 				</Swiper>
 			</section>
-            <hr className={style.hr} />
+			<hr className={style.hr} />
 		</article>
 	);
 };
