@@ -16,7 +16,7 @@ import {
     CartesianGrid,
 } from "recharts";
 
-import { GradeDataSchema } from "../../../../util/types/Type";
+import { GradeDataSchema } from "../../../../util/schema/DatabaseSchema";
 
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";

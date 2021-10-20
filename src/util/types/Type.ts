@@ -52,10 +52,3 @@ export type QuickNewsCardType = {
     imageUrl: string;
     timestamp: Date;
 };
-
-export type GradeDataSchema = {
-    year: string;
-    thptqg: number;
-    dgnl?: number;
-    xthb?: number;
-};

@@ -7,7 +7,6 @@ import {
 	faBriefcase,
 	faSchool,
 	faCalendarDay,
-	faDoorOpen,
 	faClock,
 	faMap,
 	faLandmark,
@@ -95,17 +94,6 @@ const SchoolOverview = () => {
 						icon={faCalendarDay}
 						heading="Thời gian nhập học"
 						info={["Tháng 9"]}
-					/>
-				</li>
-				<li>
-					<ListTile
-						icon={faDoorOpen}
-						heading="Phương thức tuyển sinh"
-						info={[
-							"Điểm thi THPTQG",
-							"Ưu tiên xét tuyển",
-							"Đánh giá năng lực",
-						]}
 					/>
 				</li>
 				<li>

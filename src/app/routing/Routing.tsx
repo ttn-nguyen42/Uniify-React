@@ -8,6 +8,7 @@ import Landing from "../../pages/landing/Landing";
 import { Switch, Route } from "react-router";
 
 import style from "./Routing.module.scss";
+import DatabaseAdmin from "../../admin/DatabaseAdmin";
 
 const Routing = () => {
 	return (
@@ -30,6 +31,9 @@ const Routing = () => {
 				</Route>
 				<Route path="/explore/:category/:location/:id">
 					<SchoolInfo />
+				</Route>
+				<Route path="/admin" exact>
+					<DatabaseAdmin />
 				</Route>
 			</Switch>
 		</main>
