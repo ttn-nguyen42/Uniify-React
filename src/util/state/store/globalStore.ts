@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import explorerReducers from "../slice/explorerSlice";
+import adminReducers from "../slice/adminSlice";
 
 const globalStore = configureStore({
-	reducer: {
+    reducer: {
         explorer: explorerReducers,
+        admin: adminReducers,
     },
 });
 

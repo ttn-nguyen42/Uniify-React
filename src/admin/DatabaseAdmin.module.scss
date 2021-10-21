@@ -1,5 +1,9 @@
+@import "../custom/mixins";
+
+@include header-style;
+
 .admin {
-    margin: 0 10%;
+    margin: 3% 10%;
     h1,
     h2,
     h3,
@@ -10,4 +14,8 @@
     .header h2 {
         color: white;
     }
+}
+
+label {
+    color: white;
 }

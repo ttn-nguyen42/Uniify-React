@@ -1,18 +1,17 @@
-import { Formik } from "formik";
 import Form from "react-bootstrap/Form";
-import yup from "yup";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Alert from "react-bootstrap/Alert";
 
-const Schema = yup.object().shape({
-    category: yup.string().required(),
-    locationCity: yup.string().required(),
-    shortLocation: yup.string().required(),
-});
+import {
+    slugifyLocation,
+    slugifyCategory,
+} from "../../../../util/ultility/UltilityFunctions";
 
-const initialValues = {
-    category: "",
-    locationCity: "",
-    shortLocation: "",
-};
+import { useDispatch, useSelector } from "react-redux";
+import { updateSchoolSchema } from "../../../../util/state/slice/adminSlice";
+
+import { RootState } from "../../../../util/state/store/globalStore";
 
 const locations = [
     "An Giang",
@@ -78,41 +77,113 @@ const locations = [
     "Vĩnh Long",
     "Vĩnh Phúc",
     "Yên Bái",
-]
-
-const categories = [
-    { name: "Kinh doanh và kinh tế", cat: "kdkt" },
-    { name: "Sản xuất và chế biến", cat: "sxcb" },
-    { name: "Kiến trúc và xây dựng", cat: "ktxd" },
-    { name: "Công nghệ thông tin", cat: "cntt" },
-    { name: "Luật - nhân văn", cat: "ltnv" },
-    { name: "Nghệ thuât và đồ họa", cat: "ntdh" },
-    { name: "Báo chí và xã hội", cat: "bcxh" },
-    { name: "Khoa học cơ bản", cat: "khcb" },
-    { name: "Giáo dục và sư phạm", cat: "spgd" },
-    { name: "Nông lâm ngư nghiệp", cat: "nlnn" },
 ];
 
+const categories = [
+    "Kinh doanh và kinh tế",
+    "Sản xuất và chế biến",
+    "Kiến trúc và xây dựng",
+    "Công nghệ thông tin",
+    "Luật - nhân văn",
+    "Nghệ thuật và đồ họa",
+    "Báo chí và xã hội",
+    "Khoa học cơ bản",
+    "Giáo dục và sư phạm",
+    "Nông lâm ngư nghiệp",
+];
+
+const cityOptions = locations.map((item: string, index) => {
+    const sluggedStringForUrl = slugifyLocation(item);
+    return (
+        <option key={index} value={sluggedStringForUrl}>
+            {item}
+        </option>
+    );
+});
+
 const SchoolSchemaInput = () => {
+    const formState = useSelector((state: RootState) => state.admin);
+    const dispatch = useDispatch();
+
     return (
         <section>
-            <Formik
-                validationSchema={Schema}
-                onSubmit={console.log}
-                initialValues={initialValues}
-            >
-                {({
-                    handleSubmit,
-                    handleChange,
-                    handleBlur,
-                    values,
-                    touched,
-                    isValid,
-                    errors,
-                }) => {
-                    return <Form noValidate onSubmit={handleSubmit}></Form>;
-                }}
-            </Formik>
+            <h5>Phân loại dữ liệu</h5>
+            <p>Thông tin sử dụng để phân loại dữ liệu</p>
+            <Row className="gap-3">
+                <Col md>
+                    <Form.Group>
+                        <Form.Label>Thành phố</Form.Label>
+                        <Form.Select
+                            defaultValue={formState.locationCity}
+                            onChange={(
+                                event: React.ChangeEvent<HTMLSelectElement>
+                            ) => {
+                                const currentCityState = {
+                                    ...formState,
+                                    locationCity: event.target.value,
+                                };
+                                dispatch(updateSchoolSchema(currentCityState));
+                            }}
+                        >
+                            {cityOptions}
+                        </Form.Select>
+                    </Form.Group>
+                </Col>
+                <Col md>
+                    <Form.Group>
+                        <Form.Label>Danh mục</Form.Label>
+                        {categories.map((item: string, index) => {
+                            const sluggedStringForUrl = slugifyCategory(item);
+                            return (
+                                <Form.Check
+                                    type="checkbox"
+                                    key={index}
+                                    label={item}
+                                    id={sluggedStringForUrl}
+                                    onChange={() => {
+                                        const currentCategoryState = {
+                                            ...formState,
+                                            category: {
+                                                ...formState.category,
+                                                [sluggedStringForUrl]: true,
+                                            },
+                                        };
+                                        dispatch(
+                                            updateSchoolSchema(
+                                                currentCategoryState
+                                            )
+                                        );
+                                    }}
+                                />
+                            );
+                        })}
+                    </Form.Group>
+                </Col>
+                <Col md>
+                    <Form.Group>
+                        <Form.Label>Quận & Thành phố</Form.Label>
+                        <Alert variant="warning">
+                            Ngắn gọn, được viết tắt <b>Thành phố</b> thành{" "}
+                            <b>TP</b>, phải viết hoa đầu chữ
+                            <br />
+                            Ví dụ: Quận 10, TP.HCM; Hai Bà Trưng, Hà Nội;...
+                        </Alert>
+                        <Form.Control
+                            type="text"
+                            value={formState.shortLocation}
+                            onChange={(
+                                event: React.ChangeEvent<HTMLInputElement>
+                            ) => {
+                                const currentShortState = {
+                                    ...formState,
+                                    shortLocation: event.target.value,
+                                };
+                                dispatch(updateSchoolSchema(currentShortState));
+                            }}
+                        />
+                    </Form.Group>
+                </Col>
+            </Row>
         </section>
     );
 };

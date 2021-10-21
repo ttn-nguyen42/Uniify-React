@@ -13,8 +13,8 @@ export type MajorSchema = {
 export type HeaderSchema = {
     schoolName: string;
     englishName: string;
-    averageRating: number;
-    numberOfRating: number;
+    averageRating: number; // Assign a random number
+    numberOfRating: number; // Assign a random number
 };
 
 export type GallerySchema = {
@@ -24,15 +24,15 @@ export type GallerySchema = {
 };
 
 export type MajorListSchema = {
-    list: MajorSchema[];
+    list: string | MajorSchema[];
 };
 
 export type ContactSchema = {
-    address: string[];
-    contactEmail: string[];
-    contactNumber: string[];
-    mainWebsite: string[];
-    schoolCode: string[];
+    address: string[] | string;
+    contactEmail: string[] | string;
+    contactNumber: string[] | string;
+    mainWebsite: string[] | string;
+    schoolCode: string[] | string;
 };
 
 export type AdmissionSchema = {
@@ -43,24 +43,37 @@ export type AdmissionSchema = {
 };
 
 export type OverviewSchema = {
-    description: string[];
+    description: string;
     subjectOfEducation: string[];
     programs: string[];
     entryMonth: string[];
     studyTime: string[];
-    facilityImage: string[];
+    facilityImage: string[] | string;
 };
 
 export type FacilitySchema = {
-    branches: string[];
-    scaleOfOperation: number;
+    branches: string[] | string;
+    scaleOfOperation: number; // Assign a random number
     supportingFacility: string[];
     labs: string[];
 };
 
+export type CategorySchema = {
+    "kinh-doanh-kinh-te"?: boolean;
+    "san-xuat-che-bien"?: boolean;
+    "kien-truc-xay-dung"?: boolean;
+    "cong-nghe-thong-tin"?: boolean;
+    "luat-nhan-van"?: boolean;
+    "nghe-thuat-do-hoa"?: boolean;
+    "bao-chi-xa-hoi"?: boolean;
+    "khoa-hoc-co-ban"?: boolean;
+    "giao-duc-su-pham"?: boolean;
+    "nong-lam-ngu-nghiep"?: boolean;
+};
+
 export type SchoolSchema = {
-    category: string[];
-    locationCity: string[];
+    category: CategorySchema;
+    locationCity: string;
     shortLocation: string;
     header: HeaderSchema;
     gallery: GallerySchema;
@@ -68,7 +81,7 @@ export type SchoolSchema = {
     admission: AdmissionSchema;
     overview: OverviewSchema;
     facility: FacilitySchema;
-    major: MajorSchema;
+    major: MajorListSchema;
 };
 
 export type ShortPreviewSchema = {

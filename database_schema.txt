@@ -1,0 +1,63 @@
+SchoolSchema
+		category: string[]
+		locationCity: string
+		shortLocation: string
+	header
+		schoolName: string
+		englishName: string
+		avgRating: number
+		numberOfRating: number
+	gallery
+		mainImage: string
+		sideImage1: string
+		sideImage2: string
+		
+	major
+		list: MajorSchema[]
+	contact
+		address: string[]
+		contactEmail: string[]
+		contactNumber: string[]
+		mainWebsite: string[]
+		schoolCode: string[] eg: QSB
+	admission
+		thptqg: string[] eg: A00, A01, B01,...
+		dgnl: string[] eg: DGNL cua Dai hoc Quoc gia TP.HCM
+		xths: string[]	eg: UTXT cua Dai hoc Quoc gia TP.HCM
+		otherMethod: string eg: Khong
+	overview
+		description: string[]
+		subjectOfEducation: string[] eg: Dai hoc & Sau dai hoc
+		programs: string[] eg: Dai tra, Tien tien, CLC
+		entryMonth: string[] eg: Thang 9
+		studyTime: string[] eg: 4 nam, 5 nam
+		facilityImage: string[]
+	facility
+		branches: string[]
+		scaleOfOperation: number (in ha)
+		supportingFacility: string[]
+		labs: string[]
+		
+MajorSchema 
+	major: string
+	gradeData: GradeDataSchema[]
+	
+GradeDataSchema
+	year: string
+	thptqg?: number
+	dgnl?: number
+	xths?: number
+
+ShortPreviewSchema -> this will be added to every categories that it is related to and city
+	schoolName: string
+	englishName: string
+	avgRating: string
+	numberOfRating: string
+	shortLocation: string
+	category: string
+	id: string (from the return callback of Realtime Database)
+	previewImage: string[] -> take from mainImage
+
+		
+		
+		
