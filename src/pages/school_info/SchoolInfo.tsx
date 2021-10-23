@@ -5,7 +5,6 @@ import SchoolGallery from "./components/school_gallery/SchoolGallery";
 import SchoolOverview from "./components/school_overview/SchoolOverview";
 import ApplyCard from "./components/apply_card/ApplyCard";
 import MajorList from "./components/major_list/MajorList";
-import EntryGradeGraph from "./components/entry_grade_graph/EntryGradeGraph";
 import AdmissionMethod from "./components/admission_method/AdmissionMethod";
 
 const SchoolInfo = () => {
@@ -15,17 +14,15 @@ const SchoolInfo = () => {
 
     return (
         <div className={style.info}>
-            <SchoolHeader />
-            <SchoolGallery />
+            <SchoolHeader/>
+            <SchoolGallery/>
             <section className={style.body}>
-                <SchoolOverview />
-                <ApplyCard />
+                <SchoolOverview/>
+                <ApplyCard/>
             </section>
-            <MajorList />
-            <AdmissionMethod />
-            <EntryGradeGraph />
-            <section className={style.map}></section>
-            <section className={style.comment}></section>
+            <MajorList/>
+            <AdmissionMethod/>
+            {/*<EntryGradeGraph />*/}
         </div>
     );
 };

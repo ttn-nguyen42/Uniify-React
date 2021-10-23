@@ -1,8 +1,12 @@
+export type MethodGradeSchema = {
+    method: string;
+    grade: number;
+}
 export type GradeDataSchema = {
     year: string;
-    thptqg: number;
-    dgnl?: number;
-    xths?: number;
+    thptqg: MethodGradeSchema[];
+    dgnl?: MethodGradeSchema[];
+    xths?: MethodGradeSchema[];
 };
 
 export type MajorSchema = {
@@ -14,7 +18,7 @@ export type HeaderSchema = {
     schoolName: string;
     englishName: string;
     averageRating: number; // Assign a random number
-    numberOfRating: number; // Assign a random number
+    numberOfRating: string; // Assign a random number
 };
 
 export type GallerySchema = {
@@ -24,15 +28,16 @@ export type GallerySchema = {
 };
 
 export type MajorListSchema = {
-    list: string | MajorSchema[];
+    allMajorList: string[];
+    list: MajorSchema[];
 };
 
 export type ContactSchema = {
-    address: string[] | string;
-    contactEmail: string[] | string;
-    contactNumber: string[] | string;
-    mainWebsite: string[] | string;
-    schoolCode: string[] | string;
+    address: string[];
+    contactEmail: string[];
+    contactNumber: string[];
+    mainWebsite: string[];
+    schoolCode: string[];
 };
 
 export type AdmissionSchema = {
@@ -48,31 +53,18 @@ export type OverviewSchema = {
     programs: string[];
     entryMonth: string[];
     studyTime: string[];
-    facilityImage: string[] | string;
+    facilityImage: string[];
 };
 
 export type FacilitySchema = {
-    branches: string[] | string;
-    scaleOfOperation: number; // Assign a random number
+    branches: string[];
+    scaleOfOperation: string; // Assign a random number
     supportingFacility: string[];
     labs: string[];
 };
 
-export type CategorySchema = {
-    "kinh-doanh-kinh-te"?: boolean;
-    "san-xuat-che-bien"?: boolean;
-    "kien-truc-xay-dung"?: boolean;
-    "cong-nghe-thong-tin"?: boolean;
-    "luat-nhan-van"?: boolean;
-    "nghe-thuat-do-hoa"?: boolean;
-    "bao-chi-xa-hoi"?: boolean;
-    "khoa-hoc-co-ban"?: boolean;
-    "giao-duc-su-pham"?: boolean;
-    "nong-lam-ngu-nghiep"?: boolean;
-};
-
 export type SchoolSchema = {
-    category: CategorySchema;
+    category: object;
     locationCity: string;
     shortLocation: string;
     header: HeaderSchema;
@@ -88,14 +80,10 @@ export type ShortPreviewSchema = {
     schoolName: string;
     englishName: string;
     averageRating: number;
-    numberOfRating: number;
+    numberOfRating: string;
     shortLocation: string;
     locationCity: string; // Take from SchoolSchema
     category: string; // Take from the first element of category in SchoolSchema
     id: string;
     previewImage: string;
 };
-
-/*
-File structure in Realtime Database: 
-*/

@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import { RootState } from "../../../../util/state/store/globalStore";
+import {RootState} from "../../../../util/state/store/globalStore";
 
-import { updateFacilitySchema } from "../../../../util/state/slice/adminSlice";
-import { FacilitySchema } from "../../../../util/schema/DatabaseSchema";
+import {updateAdmissionSchema, updateFacilitySchema} from "../../../../util/state/slice/adminSlice";
+import {AdmissionSchema, FacilitySchema} from "../../../../util/schema/DatabaseSchema";
 
-import { updateAdmissionSchema } from "../../../../util/state/slice/adminSlice";
-import { AdmissionSchema } from "../../../../util/schema/DatabaseSchema";
+import React from "react";
+import {filterArray} from "../../../../util/ultility/UtilityFunctions";
 
 const supportingFacilityOptions = [
     "Sân bóng đá",
@@ -42,10 +42,13 @@ const labOptions = [
     "Thiết kế đồ họa",
     "Mô phỏng",
     "Vườn trong nhà",
+    "Giải phẫu",
+    "Điều dưỡng",
+    "Phòng mổ",
     "Không có",
 ];
 
-const thptqgOptions = [
+export const thptqgOptions = [
     "Khối A",
     "Khối B",
     "Khối C",
@@ -54,27 +57,24 @@ const thptqgOptions = [
     "Không",
 ];
 
-const dgnlOptions = [
+export const dgnlOptions = [
     "Đánh giá Năng lực của ĐHQG TP.HCM",
     "Đánh giá Năng lực của ĐHQG Hà Nội",
-    "Đánh giá Năng lực của ĐHQG Huế",
     "Đánh giá Năng lực của ĐHQG Đà Nẵng",
     "Kiểm tra tư duy ĐH Bách khoa Hà Nội",
     "Tổ chức riêng (Có)",
     "Không",
 ];
 
-const xthsOptions = [
+export const xthsOptions = [
     "Ưu tiên xét tuyển của ĐHQG TP.HCM",
     "Xét tuyển hồ sơ cùng chứng chỉ IELTS",
-    "Xét tuyển bằng chứng chỉ quốc tế (SAT)",
-    "Xét tuyển bằng chứng chỉ quốc tế (A-Level)",
-    "Xét tuyển bằng chứng chỉ quôc tế (ACT)",
+    "Xét tuyển bằng chứng chỉ quốc tế",
     "Theo thể thức riêng (Có)",
     "Không",
 ];
 
-const otherOptions = [
+export const otherOptions = [
     "Tuyển thẳng theo quy định BGD&ĐT",
     "Tuyển thẳng theo quy định riêng (Có)",
     "Tuyển thẳng người nước ngoài",
@@ -98,7 +98,9 @@ const FacilitySchemaInput = () => {
                                         key={index}
                                         type="checkbox"
                                         id={item}
-                                        onChange={() => {
+                                        onChange={(
+                                            event: React.ChangeEvent<HTMLInputElement>
+                                        ) => {
                                             const newFacilityState: FacilitySchema =
                                                 {
                                                     ...formState.facility,
@@ -108,6 +110,13 @@ const FacilitySchemaInput = () => {
                                                         item,
                                                     ],
                                                 };
+                                            if (!event.target.checked) {
+                                                newFacilityState.supportingFacility =
+                                                    filterArray(
+                                                        newFacilityState.supportingFacility,
+                                                        item
+                                                    );
+                                            }
                                             dispatch(
                                                 updateFacilitySchema(
                                                     newFacilityState
@@ -130,7 +139,9 @@ const FacilitySchemaInput = () => {
                                     key={index}
                                     type="checkbox"
                                     id={item}
-                                    onChange={() => {
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
                                         const newFacilityState: FacilitySchema =
                                             {
                                                 ...formState.facility,
@@ -139,6 +150,12 @@ const FacilitySchemaInput = () => {
                                                     item,
                                                 ],
                                             };
+                                        if (!event.target.checked) {
+                                            newFacilityState.labs = filterArray(
+                                                newFacilityState.labs,
+                                                item
+                                            );
+                                        }
                                         dispatch(
                                             updateFacilitySchema(
                                                 newFacilityState
@@ -160,7 +177,9 @@ const FacilitySchemaInput = () => {
                                     key={index}
                                     type="checkbox"
                                     id={item}
-                                    onChange={() => {
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
                                         const newAdmissionState: AdmissionSchema =
                                             {
                                                 ...formState.admission,
@@ -170,6 +189,13 @@ const FacilitySchemaInput = () => {
                                                     item,
                                                 ],
                                             };
+                                        if (!event.target.checked) {
+                                            newAdmissionState.thptqg =
+                                                filterArray(
+                                                    newAdmissionState.thptqg,
+                                                    item
+                                                );
+                                        }
                                         dispatch(
                                             updateAdmissionSchema(
                                                 newAdmissionState
@@ -192,7 +218,9 @@ const FacilitySchemaInput = () => {
                                     key={index}
                                     type="checkbox"
                                     id={item}
-                                    onChange={() => {
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
                                         const newAdmissionState: AdmissionSchema =
                                             {
                                                 ...formState.admission,
@@ -201,6 +229,13 @@ const FacilitySchemaInput = () => {
                                                     item,
                                                 ],
                                             };
+                                        if (!event.target.checked) {
+                                            newAdmissionState.xths =
+                                                filterArray(
+                                                    newAdmissionState.xths,
+                                                    item
+                                                );
+                                        }
                                         dispatch(
                                             updateAdmissionSchema(
                                                 newAdmissionState
@@ -223,7 +258,9 @@ const FacilitySchemaInput = () => {
                                     key={index}
                                     type="checkbox"
                                     id={item}
-                                    onChange={() => {
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
                                         const newAdmissionState: AdmissionSchema =
                                             {
                                                 ...formState.admission,
@@ -232,6 +269,13 @@ const FacilitySchemaInput = () => {
                                                     item,
                                                 ],
                                             };
+                                        if (!event.target.checked) {
+                                            newAdmissionState.dgnl =
+                                                filterArray(
+                                                    newAdmissionState.dgnl,
+                                                    item
+                                                );
+                                        }
                                         dispatch(
                                             updateAdmissionSchema(
                                                 newAdmissionState
@@ -253,7 +297,9 @@ const FacilitySchemaInput = () => {
                                     key={index}
                                     type="checkbox"
                                     id={item}
-                                    onChange={() => {
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
                                         const newAdmissionState: AdmissionSchema =
                                             {
                                                 ...formState.admission,
@@ -263,6 +309,13 @@ const FacilitySchemaInput = () => {
                                                     item,
                                                 ],
                                             };
+                                        if (!event.target.checked) {
+                                            newAdmissionState.otherMethod =
+                                                filterArray(
+                                                    newAdmissionState.otherMethod,
+                                                    item
+                                                );
+                                        }
                                         dispatch(
                                             updateAdmissionSchema(
                                                 newAdmissionState

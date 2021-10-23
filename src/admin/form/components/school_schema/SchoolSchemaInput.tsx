@@ -3,15 +3,13 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
 
-import {
-    slugifyLocation,
-    slugifyCategory,
-} from "../../../../util/ultility/UltilityFunctions";
+import {slugifyCategory, slugifyLocation,} from "../../../../util/ultility/UtilityFunctions";
 
-import { useDispatch, useSelector } from "react-redux";
-import { updateSchoolSchema } from "../../../../util/state/slice/adminSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {updateSchoolSchema} from "../../../../util/state/slice/adminSlice";
 
-import { RootState } from "../../../../util/state/store/globalStore";
+import {RootState} from "../../../../util/state/store/globalStore";
+import React from "react";
 
 const locations = [
     "An Giang",
@@ -140,7 +138,9 @@ const SchoolSchemaInput = () => {
                                     key={index}
                                     label={item}
                                     id={sluggedStringForUrl}
-                                    onChange={() => {
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
                                         const currentCategoryState = {
                                             ...formState,
                                             category: {
@@ -148,6 +148,10 @@ const SchoolSchemaInput = () => {
                                                 [sluggedStringForUrl]: true,
                                             },
                                         };
+                                        if (!event.target.checked) {
+                                            delete currentCategoryState
+                                                .category[sluggedStringForUrl];
+                                        }
                                         dispatch(
                                             updateSchoolSchema(
                                                 currentCategoryState
@@ -165,7 +169,7 @@ const SchoolSchemaInput = () => {
                         <Alert variant="warning">
                             Ngắn gọn, được viết tắt <b>Thành phố</b> thành{" "}
                             <b>TP</b>, phải viết hoa đầu chữ
-                            <br />
+                            <br/>
                             Ví dụ: Quận 10, TP.HCM; Hai Bà Trưng, Hà Nội;...
                         </Alert>
                         <Form.Control

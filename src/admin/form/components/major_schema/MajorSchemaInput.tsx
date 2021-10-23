@@ -26,11 +26,11 @@ const MajorSchemaInput = () => {
                 </Alert>
                 <Form.Control
                     as="textarea"
-                    value={formState.major.list as string}
+                    value={formState.major.allMajorList[0]}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                         const newMajorState: MajorListSchema = {
                             ...formState.major,
-                            list: event.target.value,
+                            allMajorList: [event.target.value],
                         };
                         dispatch(updateMajorSchema(newMajorState));
                     }}

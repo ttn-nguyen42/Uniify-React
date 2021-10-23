@@ -2,11 +2,14 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../../util/state/store/globalStore";
-import { updateOverviewSchema } from "../../../../util/state/slice/adminSlice";
-import { OverviewSchema } from "../../../../util/schema/DatabaseSchema";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../../util/state/store/globalStore";
+import {updateOverviewSchema} from "../../../../util/state/slice/adminSlice";
+import {OverviewSchema} from "../../../../util/schema/DatabaseSchema";
 import Alert from "react-bootstrap/Alert";
+import React from "react";
+
+import {filterArray} from "../../../../util/ultility/UtilityFunctions";
 
 const subjectOfEducationOptions = [
     "Đại học",
@@ -41,7 +44,7 @@ const OverviewSchemaInput = () => {
                     <Form.Group>
                         <Form.Label>Giới thiệu</Form.Label>
                         <Form.Control
-                            style={{ height: "100%" }}
+                            style={{height: "100%"}}
                             as="textarea"
                             value={formState.overview.description}
                             onChange={(
@@ -55,40 +58,47 @@ const OverviewSchemaInput = () => {
                                     updateOverviewSchema(newDescriptionState)
                                 );
                             }}
-                        ></Form.Control>
+                        />
                     </Form.Group>
                 </Col>
                 <Col md>
                     <Form.Group>
                         <Form.Label>Cấp đào tạo</Form.Label>
-                        {subjectOfEducationOptions.map(
-                            (item: string, index) => {
-                                return (
-                                    <Form.Check
-                                        label={item}
-                                        key={index}
-                                        type="checkbox"
-                                        id={item}
-                                        onChange={() => {
-                                            const newSubjectState: OverviewSchema =
-                                                {
-                                                    ...formState.overview,
-                                                    subjectOfEducation: [
-                                                        ...formState.overview
-                                                            .subjectOfEducation,
-                                                        item,
-                                                    ],
-                                                };
-                                            dispatch(
-                                                updateOverviewSchema(
-                                                    newSubjectState
-                                                )
-                                            );
-                                        }}
-                                    />
-                                );
-                            }
-                        )}
+                        {subjectOfEducationOptions.map((item: any, index) => {
+                            return (
+                                <Form.Check
+                                    label={item}
+                                    key={index}
+                                    type="checkbox"
+                                    id={item}
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
+                                        const newSubjectState: OverviewSchema =
+                                            {
+                                                ...formState.overview,
+                                                subjectOfEducation: [
+                                                    ...formState.overview
+                                                        .subjectOfEducation,
+                                                    item,
+                                                ],
+                                            };
+                                        if (!event.target.checked) {
+                                            newSubjectState.subjectOfEducation =
+                                                filterArray(
+                                                    newSubjectState.subjectOfEducation,
+                                                    item
+                                                );
+                                        }
+                                        dispatch(
+                                            updateOverviewSchema(
+                                                newSubjectState
+                                            )
+                                        );
+                                    }}
+                                />
+                            );
+                        })}
                     </Form.Group>
                 </Col>
                 <Col md>
@@ -101,8 +111,10 @@ const OverviewSchemaInput = () => {
                                     key={index}
                                     type="checkbox"
                                     id={item}
-                                    onChange={() => {
-                                        const newProgramState: OverviewSchema =
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
+                                        const newSubjectState: OverviewSchema =
                                             {
                                                 ...formState.overview,
                                                 programs: [
@@ -111,9 +123,16 @@ const OverviewSchemaInput = () => {
                                                     item,
                                                 ],
                                             };
+                                        if (!event.target.checked) {
+                                            newSubjectState.programs =
+                                                filterArray(
+                                                    newSubjectState.programs,
+                                                    item
+                                                );
+                                        }
                                         dispatch(
                                             updateOverviewSchema(
-                                                newProgramState
+                                                newSubjectState
                                             )
                                         );
                                     }}
@@ -132,17 +151,29 @@ const OverviewSchemaInput = () => {
                                     key={index}
                                     type="checkbox"
                                     id={item}
-                                    onChange={() => {
-                                        const newEntryState: OverviewSchema = {
-                                            ...formState.overview,
-                                            entryMonth: [
-                                                ...formState.overview
-                                                    .entryMonth,
-                                                item,
-                                            ],
-                                        };
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
+                                        const newSubjectState: OverviewSchema =
+                                            {
+                                                ...formState.overview,
+                                                entryMonth: [
+                                                    ...formState.overview
+                                                        .entryMonth,
+                                                    item,
+                                                ],
+                                            };
+                                        if (!event.target.checked) {
+                                            newSubjectState.entryMonth =
+                                                filterArray(
+                                                    newSubjectState.entryMonth,
+                                                    item
+                                                );
+                                        }
                                         dispatch(
-                                            updateOverviewSchema(newEntryState)
+                                            updateOverviewSchema(
+                                                newSubjectState
+                                            )
                                         );
                                     }}
                                 />
@@ -160,16 +191,29 @@ const OverviewSchemaInput = () => {
                                     key={index}
                                     type="checkbox"
                                     id={item}
-                                    onChange={() => {
-                                        const newTimeState: OverviewSchema = {
-                                            ...formState.overview,
-                                            studyTime: [
-                                                ...formState.overview.studyTime,
-                                                item,
-                                            ],
-                                        };
+                                    onChange={(
+                                        event: React.ChangeEvent<HTMLInputElement>
+                                    ) => {
+                                        const newSubjectState: OverviewSchema =
+                                            {
+                                                ...formState.overview,
+                                                studyTime: [
+                                                    ...formState.overview
+                                                        .studyTime,
+                                                    item,
+                                                ],
+                                            };
+                                        if (!event.target.checked) {
+                                            newSubjectState.studyTime =
+                                                filterArray(
+                                                    newSubjectState.studyTime,
+                                                    item
+                                                );
+                                        }
                                         dispatch(
-                                            updateOverviewSchema(newTimeState)
+                                            updateOverviewSchema(
+                                                newSubjectState
+                                            )
                                         );
                                     }}
                                 />
@@ -186,20 +230,20 @@ const OverviewSchemaInput = () => {
                             Lấy URL ảnh từ Google, cách mỗi link sử dụng dấu
                             ";", không cách dòng, không whitespace. Tối thiểu 3
                             ảnh
-                            <br />
+                            <br/>
                             Ví dụ: www.url-anh.com/image=600x600<b>;</b>
                             www.url-anh.com/image=800x300
                         </Alert>
                         <Form.Control
-                            style={{ height: "100%" }}
+                            style={{height: "100%"}}
                             as="textarea"
-                            value={formState.overview.facilityImage}
+                            value={formState.overview.facilityImage[0]}
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => {
                                 const newImageLinkState: OverviewSchema = {
                                     ...formState.overview,
-                                    facilityImage: event.target.value,
+                                    facilityImage: [event.target.value],
                                 };
                                 dispatch(
                                     updateOverviewSchema(newImageLinkState)

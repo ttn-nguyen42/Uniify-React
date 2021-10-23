@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
     AdmissionSchema,
     ContactSchema,
@@ -18,7 +18,7 @@ const initialState: SchoolSchema = {
         schoolName: "",
         englishName: "",
         averageRating: 0,
-        numberOfRating: 0,
+        numberOfRating: "0",
     },
     gallery: {
         mainImage: "",
@@ -26,11 +26,11 @@ const initialState: SchoolSchema = {
         sideImage2: "",
     },
     contact: {
-        address: "",
-        contactEmail: "",
-        contactNumber: "",
-        mainWebsite: "",
-        schoolCode: "",
+        address: [""],
+        contactEmail: [""],
+        contactNumber: [""],
+        mainWebsite: [""],
+        schoolCode: [""],
     },
     admission: {
         thptqg: [],
@@ -44,15 +44,16 @@ const initialState: SchoolSchema = {
         programs: [],
         entryMonth: [],
         studyTime: [],
-        facilityImage: "",
+        facilityImage: [""],
     },
     facility: {
-        branches: "",
-        scaleOfOperation: 0,
+        branches: [""],
+        scaleOfOperation: "0",
         supportingFacility: [],
         labs: [],
     },
     major: {
+        allMajorList: [""],
         list: [],
     },
 };

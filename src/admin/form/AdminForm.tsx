@@ -8,13 +8,13 @@ import GallerySchemaInput from "./components/gallery_schema/GallerySchemaInput";
 import FacilitySchemaInput from "./components/facility_schema/FacilitySchemaInput";
 import ContactSchemaInput from "./components/contact_schema/ContactSchemaInput";
 
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { RootState } from "../../util/state/store/globalStore";
+import {RootState} from "../../util/state/store/globalStore";
 import React from "react";
 
-import { inputDataTransformation } from "../../util/ultility/AdminUltility";
+import {inputDataTransformation} from "../../util/ultility/AdminUtility";
 
 const AdminForm = () => {
     const adminState = useSelector((state: RootState) => state.admin);
@@ -26,15 +26,15 @@ const AdminForm = () => {
 
     return (
         <section className={style.form}>
-            <Form onSubmit={handleSubmit}>
-                <HeaderSchemaInput />
-                <SchoolSchemaInput />
-                <OverviewSchemaInput />
-                <GallerySchemaInput />
-                <FacilitySchemaInput />
-                <ContactSchemaInput />
-                <MajorSchemaInput />
-                <Button type="button" variant="success">
+            <Form>
+                <HeaderSchemaInput/>
+                <SchoolSchemaInput/>
+                <OverviewSchemaInput/>
+                <GallerySchemaInput/>
+                <FacilitySchemaInput/>
+                <ContactSchemaInput/>
+                <MajorSchemaInput/>
+                <Button type="button" variant="success" onClick={handleSubmit}>
                     Nhập lên cơ sở dữ liệu
                 </Button>
             </Form>

@@ -1,19 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../../util/state/store/globalStore";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../../util/state/store/globalStore";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 
-import {
-    updateContactSchema,
-    updateFacilitySchema,
-} from "../../../../util/state/slice/adminSlice";
-import {
-    ContactSchema,
-    FacilitySchema,
-} from "../../../../util/schema/DatabaseSchema";
+import {updateContactSchema, updateFacilitySchema,} from "../../../../util/state/slice/adminSlice";
+import {ContactSchema, FacilitySchema,} from "../../../../util/schema/DatabaseSchema";
 
 const ContactSchemaInput = () => {
     const formState = useSelector((state: RootState) => state.admin);
@@ -26,85 +20,85 @@ const ContactSchemaInput = () => {
                         <Form.Label>Địa chỉ</Form.Label>
                         <Alert variant="warning">
                             Địa chỉ đầy đủ của trường
-                            <br />
+                            <br/>
                             Viết hoa đầu dòng, các cơ sở cách nhau băng dấu ";"
-                            <br />
+                            <br/>
                             Ví dụ: 268 Lý Thường Kiệt, Q.10, TP.HCM;...
                         </Alert>
                         <Form.Control
                             as="textarea"
-                            value={formState.contact.address}
+                            value={formState.contact.address[0]}
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => {
                                 const newContactState: ContactSchema = {
                                     ...formState.contact,
-                                    address: event.target.value,
+                                    address: [event.target.value],
                                 };
                                 const newFacilityState: FacilitySchema = {
                                     ...formState.facility,
-                                    branches: event.target.value,
+                                    branches: [event.target.value],
                                 };
                                 dispatch(updateContactSchema(newContactState));
                                 dispatch(
                                     updateFacilitySchema(newFacilityState)
                                 );
                             }}
-                        ></Form.Control>
+                        />
                     </Form.Group>
                 </Col>
                 <Col md>
                     <Form.Group>
                         <Form.Label>Email</Form.Label>
-                        <Alert variant="warning" style={{ height: "100%" }}>
+                        <Alert variant="warning" style={{height: "100%"}}>
                             Email liên hệ của trường
-                            <br />
+                            <br/>
                             Các email cách nhau 1 dấu ";", tối thiểu 1 email
-                            <br />
+                            <br/>
                             Ví dụ: aao@hcmut.edu.vn;oisp@hcmut.edu.vn
-                            <br />
+                            <br/>
                         </Alert>
                         <Form.Control
                             as="textarea"
-                            style={{ height: "auto" }}
-                            value={formState.contact.contactEmail}
+                            style={{height: "auto"}}
+                            value={formState.contact.contactEmail[0]}
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => {
                                 const newContactState: ContactSchema = {
                                     ...formState.contact,
-                                    contactEmail: event.target.value,
+                                    contactEmail: [event.target.value],
                                 };
                                 dispatch(updateContactSchema(newContactState));
                             }}
-                        ></Form.Control>
+                        />
                     </Form.Group>
                 </Col>
                 <Col md>
                     <Form.Group>
                         <Form.Label>Website</Form.Label>
-                        <Alert variant="warning" style={{ height: "100%" }}>
+                        <Alert variant="warning" style={{height: "100%"}}>
                             Website của trường
-                            <br />
+                            <br/>
                             Các website cách nhau 1 dấu ";", tối thiểu 1 website
-                            <br />
+                            <br/>
                             Ví dụ: oisp.hcmut.edu.vn;aao.hcmut.edu.vn
-                            <br />
+                            <br/>
                         </Alert>
                         <Form.Control
                             as="textarea"
-                            style={{ height: "auto" }}
-                            value={formState.contact.mainWebsite}
+                            style={{height: "auto"}}
+                            value={formState.contact.mainWebsite[0]}
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => {
                                 const newContactState: ContactSchema = {
                                     ...formState.contact,
-                                    mainWebsite: event.target.value,
+                                    mainWebsite: [event.target.value],
                                 };
                                 dispatch(updateContactSchema(newContactState));
                             }}
-                        ></Form.Control>
+                        />
                     </Form.Group>
                 </Col>
             </Row>
@@ -114,24 +108,24 @@ const ContactSchemaInput = () => {
                         <Form.Label>Số điện thoại</Form.Label>
                         <Alert variant="warning">
                             Số điện thoại của trường
-                            <br />
+                            <br/>
                             Cách nhau băng dấu ";", tối thiếu 1 SDT
-                            <br />
+                            <br/>
                             Ví dụ: (023) 456 789;...
                         </Alert>
                         <Form.Control
                             as="textarea"
-                            value={formState.contact.contactNumber}
+                            value={formState.contact.contactNumber[0]}
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => {
                                 const newContactState: ContactSchema = {
                                     ...formState.contact,
-                                    contactNumber: event.target.value,
+                                    contactNumber: [event.target.value],
                                 };
                                 dispatch(updateContactSchema(newContactState));
                             }}
-                        ></Form.Control>
+                        />
                     </Form.Group>
                 </Col>
                 <Col md>
@@ -139,24 +133,24 @@ const ContactSchemaInput = () => {
                         <Form.Label>Mã trường</Form.Label>
                         <Alert variant="warning">
                             Mã trường
-                            <br />
+                            <br/>
                             Cách nhau băng dấu ";", tối thiếu 1 mã trường
-                            <br />
+                            <br/>
                             Ví dụ: QSB;ABC
                         </Alert>
                         <Form.Control
                             as="textarea"
-                            value={formState.contact.schoolCode}
+                            value={formState.contact.schoolCode[0]}
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => {
                                 const newContactState: ContactSchema = {
                                     ...formState.contact,
-                                    schoolCode: event.target.value,
+                                    schoolCode: [event.target.value],
                                 };
                                 dispatch(updateContactSchema(newContactState));
                             }}
-                        ></Form.Control>
+                        />
                     </Form.Group>
                 </Col>
             </Row>
