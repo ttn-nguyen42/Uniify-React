@@ -16,7 +16,8 @@ import {
     GallerySchema,
     HeaderSchema,
     MajorListSchema,
-    OverviewSchema
+    OverviewSchema,
+    SchoolSchema
 } from "../../util/schema/DatabaseSchema";
 
 import {
@@ -60,8 +61,12 @@ const cityOptions = locations.map((item: string, index) => {
     );
 });
 
+interface AdminFormProps {
+    handleRequest: (payload: SchoolSchema) => void;
+}
+
 const
-    AdminForm = () => {
+    AdminForm: React.FC<AdminFormProps> = (props) => {
 
         // Global state management
         const dispatch = useDispatch();
@@ -112,7 +117,7 @@ const
         const handleSubmit = (event: React.SyntheticEvent) => {
             event.preventDefault();
             if (submissable) {
-                inputDataTransformation(formState);
+                props.handleRequest(inputDataTransformation(formState));
             }
         };
 

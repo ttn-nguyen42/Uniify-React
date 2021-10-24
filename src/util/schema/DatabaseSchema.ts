@@ -82,8 +82,8 @@ export type ShortPreviewSchema = {
     averageRating: number;
     numberOfRating: string;
     shortLocation: string;
-    locationCity: string; // Take from SchoolSchema
-    category: string; // Take from the first element of category in SchoolSchema
+    locationCity: string;
+    category: string[];
     id: string;
     previewImage: string;
 };

@@ -4,8 +4,12 @@ import HeaderText from "../components/header/header_text/HeaderText";
 import AdminForm from "./form/AdminForm";
 
 import Alert from "react-bootstrap/Alert";
+import {SchoolSchema} from "../util/schema/DatabaseSchema";
 
 const DatabaseAdmin = () => {
+    const handleRequest = (data: SchoolSchema) => {
+        console.log(data);
+    }
     return (
         <section className={style.admin}>
             <HeaderText
@@ -17,7 +21,7 @@ const DatabaseAdmin = () => {
                 Hệ thống sử dụng REST API cùng với Firestore Realtime (noSQL),
                 yêu cầu tất cả field phải được điền đầy đủ, không nên để trống
             </Alert>
-            <AdminForm />
+            <AdminForm handleRequest={handleRequest}/>
         </section>
     );
 };

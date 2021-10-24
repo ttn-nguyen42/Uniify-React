@@ -1,4 +1,10 @@
-import {GradeDataSchema, MajorSchema, MethodGradeSchema, SchoolSchema} from "../schema/DatabaseSchema";
+import {
+    GradeDataSchema,
+    MajorSchema,
+    MethodGradeSchema,
+    SchoolSchema,
+    ShortPreviewSchema
+} from "../schema/DatabaseSchema";
 import {generateRandomNumber, splitString} from "./UtilityFunctions";
 import {dgnlOptions, xthsOptions} from "../default/DefaultOptions";
 
@@ -110,6 +116,20 @@ export function handleGradeData(majorList: string[], [dgnl, thptqg, xths]: strin
     return gradeDataByMajorArray;
 }
 
+export function generatePreviewData(transformedData: SchoolSchema, id: string) {
+    return {
+        schoolName: transformedData.header.schoolName,
+        englishName: transformedData.header.englishName,
+        averageRating: transformedData.header.averageRating,
+        numberOfRating: transformedData.header.numberOfRating,
+        shortLocation: transformedData.shortLocation,
+        locationCity: transformedData.locationCity,
+        category: transformedData.category,
+        id: id,
+        previewImage: transformedData.gallery.mainImage,
+    } as ShortPreviewSchema;
+}
+
 export function inputDataTransformation(rawData: SchoolSchema) {
     let sample = {...rawData};
     const separator = ";";
@@ -174,6 +194,5 @@ export function inputDataTransformation(rawData: SchoolSchema) {
             facilityImage: _facilityImage,
         }
     }
-    // Debugging
-    console.log(sample);
+    return sample;
 }
