@@ -11,33 +11,33 @@ import style from "./Routing.module.scss";
 import DatabaseAdmin from "../../admin/DatabaseAdmin";
 
 const Routing = () => {
-	return (
-		<main className={style.main}>
-			<Switch>
-				<Route path="/" exact>
-					<Landing />
-				</Route>
-				<Route path="/explore" exact>
-					<Explore />
-				</Route>
-				<Route path="/about" exact>
-					<About />
-				</Route>
-				<Route path="/news" exact>
-					<News />
-				</Route>
-				<Route path="/dashboard" exact>
-					<Dashboard />
-				</Route>
-				<Route path="/explore/:category/:location/:id">
-					<SchoolInfo />
-				</Route>
-				<Route path="/admin" exact>
-					<DatabaseAdmin />
-				</Route>
-			</Switch>
-		</main>
-	);
+    return (
+        <main className={style.main}>
+            <Switch>
+                <Route path="/" exact>
+                    <Landing />
+                </Route>
+                <Route path="/explore" exact>
+                    <Explore />
+                </Route>
+                <Route path="/about" exact>
+                    <About />
+                </Route>
+                <Route path="/news" exact>
+                    <News />
+                </Route>
+                <Route path="/dashboard" exact>
+                    <Dashboard />
+                </Route>
+                <Route path="/explore/:id">
+                    <SchoolInfo />
+                </Route>
+                <Route path="/admin" exact>
+                    <DatabaseAdmin />
+                </Route>
+            </Switch>
+        </main>
+    );
 };
 
 export default Routing;

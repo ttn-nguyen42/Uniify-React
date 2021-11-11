@@ -2,6 +2,7 @@ export type MethodGradeSchema = {
     method: string;
     grade: number;
 };
+
 export type GradeDataSchema = {
     year: string;
     thptqg: MethodGradeSchema[];

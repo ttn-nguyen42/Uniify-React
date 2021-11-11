@@ -17,14 +17,26 @@ const classifyPayloadType = (label: string) => {
 
 const CustomTooltip: React.FC<any> = (props) => {
     if (props.active) {
+        console.log(props);
         return (
             <div className={style.tooltip}>
-                <span>
-                    <b>{classifyDataType(props.label)}</b>
-                    {`: ${props.payload[
-                        classifyPayloadType(props.label)
-                    ].value.toFixed(2)}`}
-                </span>
+                {props.payload.map((line: any) => {
+                    return (
+                        <div className={style["tooltip-content"]}>
+                            <p
+                                style={{
+                                    color: line.stroke,
+                                    fontWeight: "bold",
+                                }}
+                            >
+                                {line.name}
+                            </p>
+                            <p className={style.score}>
+                                {line.payload[line.name]}
+                            </p>
+                        </div>
+                    );
+                })}
             </div>
         );
     }

@@ -3,10 +3,10 @@ import {
     MajorSchema,
     MethodGradeSchema,
     SchoolSchema,
-    ShortPreviewSchema
+    ShortPreviewSchema,
 } from "../schema/DatabaseSchema";
-import {generateRandomNumber, splitString} from "./UtilityFunctions";
-import {dgnlOptions, xthsOptions} from "../default/DefaultOptions";
+import { generateRandomNumber, splitString } from "./UtilityFunctions";
+import { dgnlOptions, xthsOptions } from "../default/DefaultOptions";
 
 function classifyDGNLType(type: string) {
     if (type === dgnlOptions[0]) {
@@ -36,8 +36,8 @@ function generateRandomGradeTHPT(thpqg: string[]) {
     thpqg.forEach((method: string) => {
         const _methodGradeData: MethodGradeSchema = {
             method: method,
-            grade: +(generateRandomNumber([15, 30]).toFixed(2)),
-        }
+            grade: +generateRandomNumber([15, 30]).toFixed(2),
+        };
         methodGradeDataArray.push(_methodGradeData);
     });
     return methodGradeDataArray;
@@ -54,10 +54,10 @@ function generateRandomGradeDGNL(dgnl: string[]) {
             const _methodGradeData: MethodGradeSchema = {
                 method: method,
                 grade: Math.round(generateRandomNumber(threshold)),
-            }
+            };
             methodGradeDataArray.push(_methodGradeData);
         }
-    })
+    });
     return methodGradeDataArray;
 }
 
@@ -71,15 +71,18 @@ function generateRandomGradeXTHS(xths: string[]) {
         } else {
             const _methodGradeData: MethodGradeSchema = {
                 method: method,
-                grade: +(generateRandomNumber([15, 30]).toFixed(2)),
-            }
+                grade: +generateRandomNumber([15, 30]).toFixed(2),
+            };
             methodGradeDataArray.push(_methodGradeData);
         }
-    })
+    });
     return methodGradeDataArray;
 }
 
-function generateRandomGradeByYear([dgnl, thptqg, xths]: string[][], [begin, end]: number[]) {
+function generateRandomGradeByYear(
+    [dgnl, thptqg, xths]: string[][],
+    [begin, end]: number[]
+) {
     // Return a GradeDataSchema[]
     let gradeDataArray: GradeDataSchema[] = [];
     // Validity check
@@ -89,7 +92,7 @@ function generateRandomGradeByYear([dgnl, thptqg, xths]: string[][], [begin, end
             thptqg: generateRandomGradeTHPT(thptqg),
             dgnl: generateRandomGradeDGNL(dgnl),
             xths: generateRandomGradeXTHS(xths),
-        }
+        };
         // Clear empty entries
         if (_gradeData.dgnl?.length === 0) {
             delete _gradeData.dgnl;
@@ -102,44 +105,42 @@ function generateRandomGradeByYear([dgnl, thptqg, xths]: string[][], [begin, end
     return gradeDataArray;
 }
 
-export function handleGradeData(majorList: string[], [dgnl, thptqg, xths]: string[][]) {
+export function handleGradeData(
+    majorList: string[],
+    [dgnl, thptqg, xths]: string[][]
+) {
     const yearBegin = 2015;
     const yearNow = new Date().getFullYear();
     let gradeDataByMajorArray: MajorSchema[] = [];
     majorList.forEach((major: string) => {
         const _gradeDataByMajor: MajorSchema = {
             major: major,
-            gradeData: generateRandomGradeByYear([dgnl, thptqg, xths], [yearBegin, yearNow]),
-        }
+            gradeData: generateRandomGradeByYear(
+                [dgnl, thptqg, xths],
+                [yearBegin, yearNow]
+            ),
+        };
         gradeDataByMajorArray.push(_gradeDataByMajor);
     });
     return gradeDataByMajorArray;
 }
 
-export function generatePreviewData(transformedData: SchoolSchema, id: string) {
-    return {
-        schoolName: transformedData.header.schoolName,
-        englishName: transformedData.header.englishName,
-        averageRating: transformedData.header.averageRating,
-        numberOfRating: transformedData.header.numberOfRating,
-        shortLocation: transformedData.shortLocation,
-        locationCity: transformedData.locationCity,
-        category: transformedData.category,
-        id: id,
-        previewImage: transformedData.gallery.mainImage,
-    } as ShortPreviewSchema;
-}
-
 export function inputDataTransformation(rawData: SchoolSchema) {
-    let sample = {...rawData};
+    let sample = { ...rawData };
     const separator = ";";
     /*
         Split string
      */
     // Split: contact
     const _address = splitString(sample.contact.address[0], separator);
-    const _contactEmail = splitString(sample.contact.contactEmail[0], separator);
-    const _contactNumber = splitString(sample.contact.contactNumber[0], separator);
+    const _contactEmail = splitString(
+        sample.contact.contactEmail[0],
+        separator
+    );
+    const _contactNumber = splitString(
+        sample.contact.contactNumber[0],
+        separator
+    );
     const _mainWebsite = splitString(sample.contact.mainWebsite[0], separator);
     const _schoolCode = splitString(sample.contact.schoolCode[0], separator);
     // Split: facility
@@ -147,14 +148,19 @@ export function inputDataTransformation(rawData: SchoolSchema) {
     // Split: major
     const _allMajorList = splitString(sample.major.allMajorList[0], separator);
     // Splt: overview
-    const _facilityImage = splitString(sample.overview.facilityImage[0], separator);
+    const _facilityImage = splitString(
+        sample.overview.facilityImage[0],
+        separator
+    );
 
     /*
         Random number
      */
     const _scaleOfOperation = generateRandomNumber([30, 60]).toFixed(1) + " ha";
     const _averageRating = Math.round(generateRandomNumber([3, 5]));
-    const _numberOfRating = Math.round(generateRandomNumber([40, 300])).toString();
+    const _numberOfRating = Math.round(
+        generateRandomNumber([40, 300])
+    ).toString();
     // Extract types of admission method that are accepted
     const _dgnl = sample.admission.dgnl;
     const _thptqg = sample.admission.thptqg;
@@ -192,7 +198,7 @@ export function inputDataTransformation(rawData: SchoolSchema) {
         overview: {
             ...sample.overview,
             facilityImage: _facilityImage,
-        }
-    }
+        },
+    };
     return sample;
 }

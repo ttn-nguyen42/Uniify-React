@@ -77,6 +77,49 @@ export const categories = [
     "Nông lâm ngư nghiệp",
 ];
 
+export const categoriesWithKey = [
+    {
+        key: "kinh-doanh-kinh-te",
+        category: "Kinh doanh và kinh tế",
+    },
+    {
+        key: "san-xuat-che-bien",
+        category: "Sản xuất và chế biến",
+    },
+    {
+        key: "kien-truc-xay-dung",
+        category: "Kiến trúc và xây dựng",
+    },
+    {
+        key: "cong-nghe-thong-tin",
+        category: "Công nghệ thông tin",
+    },
+    {
+        key: "luat-nhan-van",
+        category: "Luật - nhân văn",
+    },
+    {
+        key: "nghe-thuat-do-hoa",
+        category: "Nghệ thuật và đồ họa",
+    },
+    {
+        key: "bao-chi-xa-hoi",
+        category: "Báo chí và xã hội",
+    },
+    {
+        key: "khoa-hoc-co-ban",
+        category: "Khoa học cơ bản",
+    },
+    {
+        key: "giao-duc-su-pham",
+        category: "Giáo dục và sư phạm",
+    },
+    {
+        key: "nong-lam-ngu-nghiep",
+        category: "Nông lâm ngư nghiệp",
+    },
+];
+
 export const subjectOfEducationOptions = [
     "Đại học",
     "Sau đại học (Thạc sĩ)",
@@ -169,4 +212,19 @@ export const otherOptions = [
     "Tuyển thẳng theo quy định riêng (Có)",
     "Tuyển thẳng người nước ngoài",
     "Không",
+];
+
+export const colorCodes = [
+    "#89B5AF",
+    "#96C7C1",
+    "#DED9C4",
+    "#D0CAB2",
+    "#D8B6A4",
+    "#FFBF86",
+    "#CEE5D0",
+    "#FBF3E4",
+    "#C8E3D4",
+    "#87AAAA",
+    "#D3E4CD",
+    "#A2D2FF",
 ];

@@ -26,7 +26,7 @@ const DatabaseAdmin = () => {
         /*
          * Upload to explore first then retrieve documentId and create small intro
          */
-
+        console.log(data);
         updateLoadingStatus(true);
         try {
             const exploreRef = await addDoc(
@@ -34,7 +34,6 @@ const DatabaseAdmin = () => {
                 data
             );
             const documentId = exploreRef.id;
-
             const previewTransformedData: ShortPreviewSchema = {
                 schoolName: data.header.schoolName,
                 englishName: data.header.englishName,
@@ -46,18 +45,20 @@ const DatabaseAdmin = () => {
                 previewImage: data.gallery.sideImage1,
                 id: documentId,
             };
-
-            const introRef = await addDoc(
+            const previewRef = await addDoc(
                 collection(FirestoreApp, "previewdata"),
                 previewTransformedData
             );
-            console.log("THÀNH CÔNG. MÃ DỮ LIỆU: " + introRef.id);
+            console.log("THÀNH CÔNG. MÃ DỮ LIỆU: " + previewRef.id);
             updateError(false);
+            alert(
+                "Dữ liệu được nhập thành công! \nMã dữ liệu: " + previewRef.id
+            );
         } catch (error) {
             console.log(error);
             updateError(true);
             alert(
-                "Đã có lỗi xảy ra, nhập dữ liệu không thành công \n Lỗi: " +
+                "Đã có lỗi xảy ra, nhập dữ liệu không thành công \nLỗi: " +
                     error
             );
         }

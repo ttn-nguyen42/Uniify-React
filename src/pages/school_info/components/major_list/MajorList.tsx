@@ -4,7 +4,21 @@ import MajorPill from "../../../../components/cards/major_pill/MajorPill";
 
 import style from "./MajorList.module.scss";
 
-const MajorList = () => {
+import { FC } from "react";
+import { SchoolMajorListProps } from "../../../../util/types/Interface";
+
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../../../util/state/store/globalStore";
+import { updateMajor } from "../../../../util/state/slice/schoolInfoSlice";
+
+const MajorList: FC<SchoolMajorListProps> = (props) => {
+    const dispatch = useDispatch();
+
+    const pillClick = (major: string) => {
+        dispatch(updateMajor(major));
+    };
+
+    const { major } = props;
     return (
         <section className={style.major}>
             <HeaderText
@@ -17,22 +31,9 @@ const MajorList = () => {
                 desc="Các ngành học đang được giảng dạy tại trường"
             />
             <div className={style.list}>
-                <MajorPill major="Khoa học máy tính" />
-                <MajorPill major="Kỹ thuật xây dựng" />
-                <MajorPill major="Quản lý công nghiệp" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
-                <MajorPill major="Kỹ thuật sinh học" />
+                {major.allMajorList.map((majorItem: string) => (
+                    <MajorPill major={majorItem} onClick={pillClick} />
+                ))}
             </div>
         </section>
     );

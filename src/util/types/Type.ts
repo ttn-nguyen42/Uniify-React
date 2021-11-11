@@ -1,7 +1,7 @@
+import { MethodGradeSchema } from "../schema/DatabaseSchema";
+
 export type InfoParams = {
     id: string;
-    category: string;
-    location: string;
 };
 
 export type MinimalCardType = {
@@ -51,4 +51,10 @@ export type QuickNewsCardType = {
     url: string;
     imageUrl: string;
     timestamp: Date;
+};
+
+export type ChartDataType = {
+    thptqg?: object[];
+    dgnl?: object[];
+    xths?: object[];
 };
