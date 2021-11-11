@@ -24,6 +24,7 @@
     "@types/recharts": "^1.8.21",
     "@types/swiper": "^5.4.3",
     "bootstrap": "^5.1.1",
+    "firebase": "^9.4.0",
     "formik": "^2.2.9",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",

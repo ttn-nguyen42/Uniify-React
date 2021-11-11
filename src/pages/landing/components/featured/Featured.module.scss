@@ -1,9 +1,9 @@
 @import "../../../../custom/mixins";
 
 .featured {
-	width: 100%;
-	height: auto;
-    color: white;
+    width: 100%;
+    height: auto;
+    color: black;
     .header {
         @include header-style;
     }
@@ -11,9 +11,9 @@
         width: auto;
     }
     :global(.swiper-button-next) {
-        color: white;
+        color: black;
     }
     :global(.swiper-button-prev) {
-        color: white;
+        color: black;
     }
 }

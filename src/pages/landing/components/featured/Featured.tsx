@@ -14,36 +14,40 @@ import { MinimalCardType } from "../../../../util/types/Type";
 SwiperCore.use([Navigation]);
 
 const Featured: React.FC<FeatureProps> = (props) => {
-	const feature = props.type;
-	const objectList = feature.itemList.map((item: MinimalCardType, index) => (
-		<SwiperSlide key={index}>
-			<RecommendedCard info={item} />
-		</SwiperSlide>
-	));
+    const feature = props.type;
+    const objectList = feature.itemList.map((item: MinimalCardType, index) => (
+        <SwiperSlide key={index}>
+            <RecommendedCard info={item} />
+        </SwiperSlide>
+    ));
 
-	return (
-		<div className={style.featured}>
-			<div className={style.header}>
-				<h3>{feature.heading}</h3>
-				<p>
-					{feature.badge.enable && (
-						<Badge bg={feature.badge.variant} className="me-2">
-							{feature.badge.content}
-						</Badge>
-					)}
-					{feature.subheading}
-				</p>
-			</div>
-			<Swiper
-				navigation={true}
-				slidesPerView={"auto"}
-				spaceBetween={20}
-				className="mySwiper"
-			>
-				{objectList}
-			</Swiper>
-		</div>
-	);
+    return (
+        <div className={style.featured}>
+            <div className={style.header}>
+                <h3>{feature.heading}</h3>
+                <p>
+                    {feature.badge.enable && (
+                        <Badge
+                            bg={feature.badge.variant}
+                            text={"light"}
+                            className="me-2"
+                        >
+                            {feature.badge.content}
+                        </Badge>
+                    )}
+                    {feature.subheading}
+                </p>
+            </div>
+            <Swiper
+                navigation={true}
+                slidesPerView={"auto"}
+                spaceBetween={20}
+                className="mySwiper"
+            >
+                {objectList}
+            </Swiper>
+        </div>
+    );
 };
 
 export default Featured;

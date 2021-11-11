@@ -6,8 +6,9 @@
     .floating {
         width: 100%;
         height: auto;
-        box-shadow: rgb(15, 15, 15) 0px 3px 8px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
         position: sticky;
+        border-radius: 0.75rem;
         top: 5%;
         padding: 5%;
         .favorite {
@@ -23,7 +24,8 @@
             }
         }
         .details {
-            h5, h3 {
+            h5,
+            h3 {
                 margin-top: 5%;
             }
             @include header-style;

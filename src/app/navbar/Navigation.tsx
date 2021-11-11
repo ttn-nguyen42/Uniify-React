@@ -8,7 +8,7 @@ import style from "./Navigation.module.scss";
 
 const Navigation = () => {
     return (
-        <Navbar variant="dark" expand="md">
+        <Navbar variant="light" expand="md">
             <div className={style.navbar}>
                 <Navbar.Brand className={style.brand} as={NavLink} to="/">
                     Uniify

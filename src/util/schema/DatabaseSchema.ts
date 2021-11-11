@@ -1,7 +1,7 @@
 export type MethodGradeSchema = {
     method: string;
     grade: number;
-}
+};
 export type GradeDataSchema = {
     year: string;
     thptqg: MethodGradeSchema[];
@@ -83,7 +83,7 @@ export type ShortPreviewSchema = {
     numberOfRating: string;
     shortLocation: string;
     locationCity: string;
-    category: string[];
-    id: string;
+    category: object;
     previewImage: string;
+    id: string;
 };

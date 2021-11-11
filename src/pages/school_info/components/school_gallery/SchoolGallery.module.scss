@@ -1,33 +1,36 @@
 .image {
-	margin-top: 2rem;
-	display: flex;
-	flex-direction: row;
-	.main-image {
-		flex-wrap: wrap;
-		flex: 7;
-		object-fit: cover;
-		img {
-			width: 100%;
-			object-fit: cover;
-			aspect-ratio: 16/10;
-		}
-	}
-	.side-image {
-		flex-wrap: wrap;
-		flex: 3;
-		img {
-			object-fit: cover;
-			aspect-ratio: 48/35;
-			width: 100%;
-			height: auto;
-		}
-		.top-img {
-			padding-left: 3%;
-			padding-bottom: 1.5%;
-		}
-		.bottom-img {
-			padding-left: 3%;
-			padding-top: 1.5%;
-		}
-	}
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    .main-image {
+        flex-wrap: wrap;
+        flex: 7;
+        object-fit: cover;
+        img {
+            width: 100%;
+            object-fit: cover;
+            aspect-ratio: 16/10;
+            border-radius: 0.75rem 0 0 0.75rem;
+        }
+    }
+    .side-image {
+        flex-wrap: wrap;
+        flex: 3;
+        img {
+            object-fit: cover;
+            aspect-ratio: 48/35;
+            width: 100%;
+            height: auto;
+        }
+        .top-img {
+            padding-left: 3%;
+            padding-bottom: 1.5%;
+            border-radius: 0 1rem 0 0;
+        }
+        .bottom-img {
+            padding-left: 3%;
+            padding-top: 1.5%;
+            border-radius: 0 0 1rem 0;
+        }
+    }
 }

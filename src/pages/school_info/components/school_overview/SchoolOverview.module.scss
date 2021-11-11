@@ -2,6 +2,9 @@
 
 .overview {
     flex: 6;
+    p {
+        color: black;
+    }
     .carousel {
         :global(.swiper-container) {
             width: 100%;
@@ -23,12 +26,12 @@
 
 ul {
     list-style-type: none;
-    margin-top: 3%;
+    margin-top: 1rem;
     padding-left: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     li {
-        margin: 1.5%;
+        margin: 1rem;
     }
 }
 

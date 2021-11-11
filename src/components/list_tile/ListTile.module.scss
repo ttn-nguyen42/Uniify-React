@@ -1,6 +1,9 @@
 .positioning {
     display: flex;
     flex-direction: row;
+    .icon-container {
+        width: 3rem;
+    }
     .content {
         margin-left: 1.5rem;
         display: flex;
