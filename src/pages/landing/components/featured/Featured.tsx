@@ -9,17 +9,24 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 
 import { FeatureProps } from "../../../../util/types/Interface";
-import { MinimalCardType } from "../../../../util/types/Type";
+import { ShortPreviewSchema } from "../../../../util/schema/DatabaseSchema";
 
 SwiperCore.use([Navigation]);
 
 const Featured: React.FC<FeatureProps> = (props) => {
     const feature = props.type;
-    const objectList = feature.itemList.map((item: MinimalCardType, index) => (
-        <SwiperSlide key={index}>
-            <RecommendedCard info={item} />
-        </SwiperSlide>
-    ));
+    let objectList: any = [];
+    if (feature.itemList !== undefined) {
+        objectList = props.type.itemList.map(
+            (item: ShortPreviewSchema, index) => {
+                return (
+                    <SwiperSlide key={index}>
+                        <RecommendedCard info={item} />
+                    </SwiperSlide>
+                );
+            }
+        );
+    }
 
     return (
         <div className={style.featured}>

@@ -5,6 +5,8 @@
     overflow-x: hidden;
     padding-right: 8px;
     .grid {
+        height: 100%;
+        width: 100%;
         display: grid;
         gap: 1rem;
         grid-template-columns: repeat(auto-fill, minmax(185px, 300fr));
@@ -14,6 +16,7 @@
         height: 100%;
         justify-content: center;
         margin-top: 15rem;
+        will-change: auto;
     }
     .no-result {
         display: flex;

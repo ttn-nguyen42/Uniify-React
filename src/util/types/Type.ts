@@ -1,23 +1,11 @@
-import { MethodGradeSchema } from "../schema/DatabaseSchema";
+import { ShortPreviewSchema } from "../schema/DatabaseSchema";
 
 export type InfoParams = {
     id: string;
 };
 
-export type MinimalCardType = {
-    name: string;
-    englishName: string;
-    rating: number;
-    numberOfRating: number;
-    shortLocation: string;
-    location: string;
-    imageUrl?: string;
-    category: string;
-    id: string;
-};
-
 export type RecommendedCardType = {
-    info: MinimalCardType;
+    info: ShortPreviewSchema;
 };
 
 export type BadgeProps = {
@@ -30,7 +18,7 @@ export type FeaturedType = {
     heading: string;
     badge: BadgeProps;
     subheading: string;
-    itemList: MinimalCardType[];
+    itemList: ShortPreviewSchema[];
 };
 
 export type CategoryType = {

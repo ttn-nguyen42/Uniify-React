@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import style from "./Landing.module.scss";
 
@@ -9,86 +9,16 @@ import Categories from "./components/categories/Categories";
 import QuickNews from "./components/news/QuickNews";
 
 import { CategoryType, QuickNewsCardType } from "../../util/types/Type";
-
-const dummyListSchool = [
-    {
-        name: "Đại học Bách khoa TP.HCM",
-        englishName: "Ho Chi Minh University of Technology",
-        rating: 5,
-        numberOfRating: 240,
-        shortLocation: "Quận 10, TP.HCM",
-        location: "hochiminh",
-        imageUrl: "https://via.placeholder.com/500",
-        category: "cntt",
-        id: "bhbwrhbeber",
-    },
-    {
-        name: "Đại học Bách khoa TP.HCM",
-        englishName: "Ho Chi Minh University of Technology",
-        rating: 5,
-        numberOfRating: 240,
-        shortLocation: "Quận 10, TP.HCM",
-        location: "hochiminh",
-        imageUrl: "https://via.placeholder.com/500",
-        category: "cntt",
-        id: "bhbwrhbeber",
-    },
-    {
-        name: "Đại học Bách khoa TP.HCM",
-        englishName: "Ho Chi Minh University of Technology",
-        rating: 5,
-        numberOfRating: 240,
-        shortLocation: "Quận 10, TP.HCM",
-        location: "hochiminh",
-        imageUrl: "https://via.placeholder.com/500",
-        category: "cntt",
-        id: "bhbwrhbeber",
-    },
-    {
-        name: "Đại học Bách khoa TP.HCM",
-        englishName: "Ho Chi Minh University of Technology",
-        rating: 5,
-        numberOfRating: 240,
-        shortLocation: "Quận 10, TP.HCM",
-        location: "hochiminh",
-        imageUrl: "https://via.placeholder.com/500",
-        category: "cntt",
-        id: "bhbwrhbeber",
-    },
-    {
-        name: "Đại học Bách khoa TP.HCM",
-        englishName: "Ho Chi Minh University of Technology",
-        rating: 5,
-        numberOfRating: 240,
-        shortLocation: "Quận 10, TP.HCM",
-        location: "hochiminh",
-        imageUrl: "https://via.placeholder.com/500",
-        category: "cntt",
-        id: "bhbwrhbeber",
-    },
-    {
-        name: "Đại học Bách khoa TP.HCM",
-        englishName: "Ho Chi Minh University of Technology",
-        rating: 5,
-        numberOfRating: 240,
-        shortLocation: "Quận 10, TP.HCM",
-        location: "hochiminh",
-        imageUrl: "https://via.placeholder.com/500",
-        category: "cntt",
-        id: "bhbwrhbeber",
-    },
-    {
-        name: "Đại học Bách khoa TP.HCM",
-        englishName: "Ho Chi Minh University of Technology",
-        rating: 5,
-        numberOfRating: 240,
-        shortLocation: "Quận 10, TP.HCM",
-        location: "hochiminh",
-        imageUrl: "https://via.placeholder.com/500",
-        category: "cntt",
-        id: "bhbwrhbeber",
-    },
-];
+import {
+    collection,
+    doc,
+    getDoc,
+    orderBy,
+    query,
+    limit,
+    getDocs,
+} from "firebase/firestore";
+import { FirestoreApp } from "../../util/api/Firebase";
 
 const dummyListCategories: CategoryType[] = [
     {
@@ -245,6 +175,81 @@ const dummyNews: QuickNewsCardType[] = [
 ];
 
 const Landing = () => {
+    const [isLoading, updateLoadingState] = useState<boolean>(true);
+    const [featuredData, updateData] = useState<any>([]);
+    const [mostViewedData, updateViewData] = useState<any>([]);
+    const [highestRatedData, updateHighestRatedData] = useState<any>([]);
+
+    useEffect(() => {
+        const fetchFeatureData = async () => {
+            try {
+                const documentReference = doc(
+                    FirestoreApp,
+                    "featuredata",
+                    "featurelist"
+                );
+                const documentResult = await getDoc(documentReference);
+
+                if (documentResult.exists()) {
+                    updateData(documentResult.data());
+                } else {
+                    throw Error;
+                }
+            } catch (error) {
+                console.log(error);
+                alert("Đã xảy ra lỗi, vui lòng thử lại");
+            }
+        };
+
+        const fetchViewedData = async () => {
+            try {
+                const collectionReference = collection(
+                    FirestoreApp,
+                    "previewdata"
+                );
+                const queryMostViewedParameter = query(
+                    collectionReference,
+                    orderBy("numberOfRating", "desc"),
+                    limit(10)
+                );
+                const queryHighestRatingParameter = query(
+                    collectionReference,
+                    orderBy("averageRating", "desc"),
+                    limit(10)
+                );
+                const mostViewedResult = await getDocs(
+                    queryMostViewedParameter
+                );
+                const highestRatingResult = await getDocs(
+                    queryHighestRatingParameter
+                );
+                if (!mostViewedResult.empty) {
+                    let mostViewedDocuments: any = [];
+                    mostViewedResult.forEach((document) =>
+                        mostViewedDocuments.push(document.data())
+                    );
+                    updateViewData(mostViewedDocuments);
+                }
+                if (!highestRatingResult.empty) {
+                    let highestRatedDocuments: any = [];
+                    highestRatingResult.forEach((document) =>
+                        highestRatedDocuments.push(document.data())
+                    );
+                    updateHighestRatedData(highestRatedDocuments);
+                } else {
+                    throw Error;
+                }
+            } catch (error) {
+                console.log(error);
+                alert("Đã xảy ra lỗi, vui lòng thử lại");
+            }
+        };
+
+        fetchFeatureData();
+        fetchViewedData();
+        updateLoadingState(false);
+    }, []);
+
     return (
         <Fragment>
             <section className={style.marg}>
@@ -271,7 +276,7 @@ const Landing = () => {
                             content: "Quảng cáo",
                             variant: "warning",
                         },
-                        itemList: dummyListSchool,
+                        itemList: featuredData.featured,
                     }}
                 />
                 <Featured
@@ -284,7 +289,7 @@ const Landing = () => {
                             content: "Nổi bật",
                             variant: "info",
                         },
-                        itemList: dummyListSchool,
+                        itemList: mostViewedData,
                     }}
                 />
                 <Featured
@@ -297,7 +302,7 @@ const Landing = () => {
                             content: "Đánh giá cao",
                             variant: "success",
                         },
-                        itemList: dummyListSchool,
+                        itemList: highestRatedData,
                     }}
                 />
                 <Categories

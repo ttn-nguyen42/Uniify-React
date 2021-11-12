@@ -25,9 +25,7 @@ const InfoList: React.FC<InfoListProps> = (props) => {
                     <p>Không có kết quả</p>
                 </div>
             )}
-            {!loading && schoolList.length !== 0 && (
-                <div className={style.grid}>{schoolList}</div>
-            )}
+            {<div className={style.grid}>{schoolList}</div>}
         </div>
     );
 };
