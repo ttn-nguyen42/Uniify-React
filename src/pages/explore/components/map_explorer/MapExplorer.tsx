@@ -14,6 +14,7 @@ import {
     updateLocation,
     updateName,
 } from "../../../../util/state/slice/explorerSlice";
+import { slugifyCategory } from "../../../../util/ultility/UtilityFunctions";
 
 const MapExplorer: React.FC<MapExplorerProps> = (props) => {
     const { setTooltip } = props;
@@ -21,7 +22,9 @@ const MapExplorer: React.FC<MapExplorerProps> = (props) => {
     const explorerDispatch = useDispatch();
 
     const handleClick = (geographyData: any) => () => {
-        explorerDispatch(updateLocation(geographyData.VARNAME_1));
+        explorerDispatch(
+            updateLocation(slugifyCategory(geographyData.VARNAME_1))
+        );
         explorerDispatch(updateName(geographyData.NAME_1));
     };
 

@@ -5,10 +5,11 @@ import About from "../../pages/about/About";
 import SchoolInfo from "../../pages/school_info/SchoolInfo";
 import Landing from "../../pages/landing/Landing";
 
-import { Switch, Route } from "react-router";
+import DatabaseAdmin from "../../admin/DatabaseAdmin";
+import AdminFeatureSelector from "../../admin/selector/AdminFeatureSelector";
 
 import style from "./Routing.module.scss";
-import DatabaseAdmin from "../../admin/DatabaseAdmin";
+import { Switch, Route } from "react-router";
 
 const Routing = () => {
     return (
@@ -34,6 +35,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/admin" exact>
                     <DatabaseAdmin />
+                </Route>
+                <Route path="/admin/selector" exact>
+                    <AdminFeatureSelector />
                 </Route>
             </Switch>
         </main>

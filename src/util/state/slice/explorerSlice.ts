@@ -1,15 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type ExplorerState = {
-    namePunctuation: string;
-    location: string;
-};
+import { ExplorerState } from "../../types/State";
 
 export const explorerSlice = createSlice({
     name: "explorer",
     initialState: {
         namePunctuation: "Hà Nội",
-        location: "Ha Noi",
+        location: "ha-noi",
+        category: "kinh-doanh-kinh-te",
     } as ExplorerState,
     reducers: {
         updateLocation: (
@@ -21,9 +19,16 @@ export const explorerSlice = createSlice({
         updateName: (state: ExplorerState, payload: PayloadAction<string>) => {
             state.namePunctuation = payload.payload;
         },
+        updateCurrentCategory: (
+            state: ExplorerState,
+            payload: PayloadAction<string>
+        ) => {
+            state.category = payload.payload;
+        },
     },
 });
 
-export const { updateLocation, updateName } = explorerSlice.actions;
+export const { updateLocation, updateName, updateCurrentCategory } =
+    explorerSlice.actions;
 
 export default explorerSlice.reducer;

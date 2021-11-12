@@ -1,27 +1,39 @@
 .info {
-	width: 100%;
-	height: 60rem;
+    width: 100%;
+    height: 60rem;
     overflow: scroll;
     overflow-x: hidden;
     padding-right: 8px;
-	.grid {
-		display: grid;
-		gap: 1rem;
-		grid-template-columns: repeat(auto-fill, minmax(185px, 300fr));
-	}
-	:global(.pagination) {
-		:global(.page-item) {
-			:global(.page-link) {
-				background-color: black !important;
-				color: white !important;
-				border-color: orange !important;
-			}
-		}
-		:global(.active) {
-			:global(.page-link) {
-				background-color: orange !important;
-				color: black !important;
-			}
-		}
-	}
+    .grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(185px, 300fr));
+    }
+    .loading {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        margin-top: 15rem;
+    }
+    .no-result {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        margin-top: 3rem;
+    }
+    :global(.pagination) {
+        :global(.page-item) {
+            :global(.page-link) {
+                background-color: black !important;
+                color: white !important;
+                border-color: orange !important;
+            }
+        }
+        :global(.active) {
+            :global(.page-link) {
+                background-color: orange !important;
+                color: black !important;
+            }
+        }
+    }
 }

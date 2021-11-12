@@ -116,14 +116,19 @@ const EntryGradeGraph: FC<SchoolGradeGraphProps> = (props) => {
                 heading="Điểm đầu vào các năm"
                 desc="Bấm vào ngành muốn xem ở trên để xem được điểm đầu vào các năm"
             />
-            <Swiper
-                navigation={true}
-                slidesPerView={1}
-                spaceBetween={20}
-                className="mySwiper"
-            >
-                {charts}
-            </Swiper>
+            {currentNavigatorState.currentMajor.length !== 0 && (
+                <Swiper
+                    navigation={true}
+                    slidesPerView={1}
+                    spaceBetween={20}
+                    className="mySwiper"
+                >
+                    {charts}
+                </Swiper>
+            )}
+            {currentNavigatorState.currentMajor.length === 0 && (
+                <b style={{ color: "#848484" }}>Chưa có ngành nào được chọn</b>
+            )}
         </section>
     );
 };

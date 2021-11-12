@@ -3,7 +3,6 @@ import {
     MajorSchema,
     MethodGradeSchema,
     SchoolSchema,
-    ShortPreviewSchema,
 } from "../schema/DatabaseSchema";
 import { generateRandomNumber, splitString } from "./UtilityFunctions";
 import { dgnlOptions, xthsOptions } from "../default/DefaultOptions";

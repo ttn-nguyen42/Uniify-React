@@ -1,188 +1,35 @@
 import style from "./InfoList.module.scss";
 
 import { InfoListProps } from "../../../../util/types/Interface";
-import { MinimalCardType } from "../../../../util/types/Type";
 import ExploreCard from "../../../../components/cards/explore_card/ExploreCard";
+import { ShortPreviewSchema } from "../../../../util/schema/DatabaseSchema";
 
-const dummyListSchool: MinimalCardType[] = [
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-	{
-		name: "Đại học Bách khoa TP.HCM",
-		englishName: "Ho Chi Minh University of Technology",
-		rating: 5,
-		numberOfRating: 240,
-		shortLocation: "Quận 10, TP.HCM",
-		location: "hochiminh",
-		imageUrl: "https://via.placeholder.com/500",
-		category: "cntt",
-		id: "bhbwrhbeber",
-	},
-];
+import Spinner from "react-bootstrap/Spinner";
 
 const InfoList: React.FC<InfoListProps> = (props) => {
+    const { data, loading } = props;
 
-	const schoolList = dummyListSchool.map((item: MinimalCardType, index) => (
-		<ExploreCard key={index} info={item} />
-	));
+    const schoolList = data.map((item: ShortPreviewSchema, index) => (
+        <ExploreCard key={index} info={item} />
+    ));
 
-	return (
-		<div className={style.info}>
-			<div className={style.grid}>{schoolList}</div>
-		</div>
-	);
+    return (
+        <div className={style.info}>
+            {loading && (
+                <div className={style.loading}>
+                    <Spinner animation="grow" variant="warning" />
+                </div>
+            )}
+            {!loading && schoolList.length === 0 && (
+                <div className={style["no-result"]}>
+                    <p>Không có kết quả</p>
+                </div>
+            )}
+            {!loading && schoolList.length !== 0 && (
+                <div className={style.grid}>{schoolList}</div>
+            )}
+        </div>
+    );
 };
 
 export default InfoList;

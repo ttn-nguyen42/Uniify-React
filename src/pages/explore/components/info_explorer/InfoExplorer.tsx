@@ -9,44 +9,79 @@ import InfoList from "../info_list/InfoList";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../util/state/store/globalStore";
+import { useEffect, useState } from "react";
+import { categoriesWithKey } from "../../../../util/default/DefaultOptions";
+import { ShortPreviewSchema } from "../../../../util/schema/DatabaseSchema";
+
+import { FirestoreApp } from "../../../../util/api/Firebase";
+import { query, where, collection, getDocs } from "firebase/firestore";
 
 const InfoExplorer = () => {
+    const explorerSlice = useSelector(
+        (state: RootState) => state.explorer.category
+    );
 
-	const categories = [
-		"kdkt",
-		"sxcb",
-		"ktxd",
-		"cntt",
-		"ltnv",
-		"ntdh",
-		"bcxh",
-		"khcb",
-		"spgd",
-		"nlnn",
-	];
+    const location = useSelector((state: RootState) => state.explorer.location);
 
-	const location = useSelector((state: RootState) => state.explorer.location);
+    const [data, updateData] = useState<ShortPreviewSchema[]>([]);
+    const [isLoading, updateLoadingState] = useState<boolean>(true);
+    const [errorOccurred, updateError] = useState<boolean>(false);
 
-	const panes = categories.map((category: string, index) => (
-		<Tab.Pane key={index} eventKey={category}>
-			<InfoList category={category} location={location} />
-		</Tab.Pane>
-	));
+    useEffect(() => {
+        // Firebase connection established here
+        const performQuery = async () => {
+            try {
+                updateLoadingState(true);
+                const queryParameters = query(
+                    collection(FirestoreApp, "previewdata"),
+                    where("locationCity", "==", location),
+                    where("category." + explorerSlice, "==", true)
+                );
+                const queryResult = await getDocs(queryParameters);
 
-	return (
-		<section className={style.explorer}>
-			<Tab.Container defaultActiveKey="kdkt">
-				<Row className={style.container}>
-					<Col sm={3}>
-						<VerticalNav />
-					</Col>
-					<Col>
-						<Tab.Content>{panes}</Tab.Content>
-					</Col>
-				</Row>
-			</Tab.Container>
-		</section>
-	);
+                let transformedResult: ShortPreviewSchema[] = [];
+                queryResult.forEach((document: any) =>
+                    transformedResult.push(document.data())
+                );
+                updateData(transformedResult);
+                setTimeout(() => {
+                    updateLoadingState(false);
+                }, 500);
+            } catch (error) {
+                updateError(true);
+                alert("Đã có lỗi xảy ra, vui lòng thử lại");
+            }
+        };
+        performQuery();
+    }, [location, explorerSlice]);
+
+    const panes = categoriesWithKey.map(
+        (category: { key: string; category: string }, index) => (
+            <Tab.Pane key={index} eventKey={category.key}>
+                <InfoList
+                    loading={isLoading}
+                    category={category.category}
+                    location={location}
+                    data={data}
+                />
+            </Tab.Pane>
+        )
+    );
+
+    return (
+        <section className={style.explorer}>
+            <Tab.Container defaultActiveKey="kinh-doanh-kinh-te">
+                <Row className={style.container}>
+                    <Col sm={3}>
+                        <VerticalNav />
+                    </Col>
+                    <Col>
+                        <Tab.Content>{panes}</Tab.Content>
+                    </Col>
+                </Row>
+            </Tab.Container>
+        </section>
+    );
 };
 
 export default InfoExplorer;

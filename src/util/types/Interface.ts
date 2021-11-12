@@ -1,9 +1,4 @@
-import {
-    FeaturedType,
-    CategoryType,
-    QuickNewsType,
-    MinimalCardType,
-} from "./Type";
+import { FeaturedType, CategoryType, QuickNewsType } from "./Type";
 
 import {
     AdmissionSchema,
@@ -13,6 +8,7 @@ import {
     HeaderSchema,
     MajorListSchema,
     OverviewSchema,
+    ShortPreviewSchema,
 } from "../schema/DatabaseSchema";
 
 export interface FeatureProps {
@@ -40,10 +36,12 @@ export interface MapExplorerProps {
 export interface InfoListProps {
     category: string;
     location: string;
+    data: ShortPreviewSchema[];
+    loading: boolean;
 }
 
 export interface ExploreCardProps {
-    info: MinimalCardType;
+    info: ShortPreviewSchema;
 }
 
 export interface SchoolInfoProps {
