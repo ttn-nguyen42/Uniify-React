@@ -1,0 +1,19 @@
+.table {
+    flex: 6;
+    height: 65vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-right: 2rem;
+    padding-right: 0.5rem;
+    .loading {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}

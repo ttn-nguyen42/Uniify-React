@@ -1,0 +1,21 @@
+.selector {
+    margin: 3% 10%;
+    .header-margin {
+        margin-bottom: 3%;
+    }
+    .subheader {
+        margin-top: 3rem;
+    }
+    .flex {
+        display: flex;
+        flex-direction: flex;
+    }
+}
+
+.loading {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}

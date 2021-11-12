@@ -29,7 +29,7 @@ import {
     updateMajorSchema,
     updateOverviewSchema,
     updateSchoolSchema,
-} from "../../util/state/slice/adminSlice";
+} from "../../util/state/slice/adminFormSlice";
 
 import {
     categories,

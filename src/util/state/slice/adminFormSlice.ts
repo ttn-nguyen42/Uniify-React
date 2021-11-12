@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
     AdmissionSchema,
     ContactSchema,
@@ -59,7 +59,7 @@ const initialState: SchoolSchema = {
 };
 
 export const adminSlice = createSlice({
-    name: "admin",
+    name: "adminForm",
     initialState: initialState,
     reducers: {
         updateSchoolSchema: (

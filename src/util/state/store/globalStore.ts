@@ -1,14 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import explorerReducers from "../slice/explorerSlice";
-import adminReducers from "../slice/adminSlice";
-import schoolInfoSlice from "../slice/schoolInfoSlice";
+import adminReducers from "../slice/adminFormSlice";
+import schoolInfoReducers from "../slice/schoolInfoSlice";
+import adminStateReducers from "../slice/adminStateSlice";
 
 const globalStore = configureStore({
     reducer: {
         explorer: explorerReducers,
         admin: adminReducers,
-        schoolInfoNavigator: schoolInfoSlice,
+        schoolInfoNavigator: schoolInfoReducers,
+        adminState: adminStateReducers,
     },
 });
 

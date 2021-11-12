@@ -80,3 +80,12 @@ export interface ApplyPillProps {
     id: string;
     favorite: boolean;
 }
+
+export interface TabularComponentProps {
+    info: ShortPreviewSchema;
+}
+
+export interface ListTabularComponentProps {
+    feature: string;
+    info: ShortPreviewSchema;
+}
