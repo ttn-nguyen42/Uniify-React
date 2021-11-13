@@ -12,6 +12,7 @@ import style from "./Routing.module.scss";
 import { Switch, Route } from "react-router";
 import ExploreCategory from "../../pages/explore/explore_category/ExploreCategory";
 import Authentication from "../../pages/authentication/Authentication";
+import ErrorPage from "../../pages/error_page/ErrorPage";
 
 const Routing = () => {
     return (
@@ -46,6 +47,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/admin/selector" exact>
                     <AdminFeatureSelector />
+                </Route>
+                <Route path="*">
+                    <ErrorPage />
                 </Route>
             </Switch>
         </main>

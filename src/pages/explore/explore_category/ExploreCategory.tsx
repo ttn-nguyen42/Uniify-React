@@ -11,6 +11,7 @@ import CategoryInfoExplorer from "./components/info_explorer/CategoryInfoExplore
 import style from "./ExploreCategory.module.scss";
 
 import Spinner from "react-bootstrap/Spinner";
+import ErrorPage from "../../error_page/ErrorPage";
 
 interface ExploreCategoryParams {
     category: string;
@@ -21,40 +22,62 @@ const ExploreCategory = () => {
     const { category } = params as ExploreCategoryParams;
 
     const [isLoading, updateLoadingState] = useState<boolean>(true);
+    const [errorOccurred, updateErrorState] = useState<boolean>(false);
+
+    let instanceError: boolean = false;
+
     const [data, updateData] = useState<any>([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const collectionReference = collection(FirestoreApp, "previewdata");
-            const queryParams = query(
-                collectionReference,
-                where("category." + category, "==", true)
-            );
-            const queryResult = await getDocs(queryParams);
-            let transformedResult: any = [];
-            queryResult.forEach((document) => {
-                transformedResult.push(document.data());
-            });
-            updateData(transformedResult);
-            updateLoadingState(false);
+            try {
+                const collectionReference = collection(
+                    FirestoreApp,
+                    "previewdata"
+                );
+                const queryParams = query(
+                    collectionReference,
+                    where("category." + category, "==", true)
+                );
+                const queryResult = await getDocs(queryParams);
+                let transformedResult: any = [];
+                queryResult.forEach((document) => {
+                    transformedResult.push(document.data());
+                });
+                updateData(transformedResult);
+                updateLoadingState(false);
+            } catch (error) {
+                updateErrorState(true);
+            }
         };
         fetchData();
     }, [category]);
 
-    const categoryInfo = categoriesWithKeyAndDescription.find(
+    let categoryInfo: any = [];
+
+    categoryInfo = categoriesWithKeyAndDescription.find(
         (categoryItem) => categoryItem.key === category
     );
-    const categoryName = categoryInfo!.category;
-    const categoryDescription = categoryInfo!.description;
+
+    let categoryName = "";
+    let categoryDescription = "";
+
+    if (categoryInfo === undefined) {
+        instanceError = true;
+    } else {
+        categoryName = categoryInfo.category;
+        categoryDescription = categoryInfo.description;
+    }
 
     return (
         <Fragment>
+            {(errorOccurred || instanceError) && <ErrorPage />}
             {isLoading && (
                 <div className={style.loading}>
-                    <Spinner animation="grow" variant="warning" />{" "}
+                    <Spinner animation="grow" variant="warning" />
                 </div>
             )}
-            {!isLoading && (
+            {!isLoading && !errorOccurred && !instanceError && (
                 <div className={style.body}>
                     <HeaderText
                         heading={categoryName}

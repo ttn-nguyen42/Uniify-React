@@ -2,7 +2,6 @@ import { SchoolGalleryProps } from "../../../../util/types/Interface";
 import style from "./SchoolGallery.module.scss";
 
 import { FC } from "react";
-import { getAllByPlaceholderText } from "@testing-library/react";
 
 const SchoolGallery: FC<SchoolGalleryProps> = (props) => {
     const { gallery } = props;

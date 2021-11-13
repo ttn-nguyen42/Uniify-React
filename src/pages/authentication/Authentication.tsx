@@ -7,6 +7,7 @@ import { LoginCredential, RegisterCredential } from "../../util/types/Type";
 import { useState, Fragment } from "react";
 
 import Spinner from "react-bootstrap/Spinner";
+import ErrorPage from "../error_page/ErrorPage";
 
 interface AuthenticationParams {
     action: string;
@@ -17,6 +18,8 @@ const Authentication = () => {
     const { action } = params as AuthenticationParams;
 
     const [isLoading, setLoadingStatus] = useState<boolean>(false);
+
+    let instanceError = false;
 
     const handleLogin = (payload: LoginCredential) => {
         console.log(payload);
@@ -32,14 +35,19 @@ const Authentication = () => {
         }, 2000);
     };
 
+    if (action !== "register" && action !== "login") {
+        instanceError = true;
+    }
+
     return (
         <Fragment>
-            {isLoading && (
+            {instanceError && <ErrorPage />}
+            {isLoading && !instanceError && (
                 <div className={style.loading}>
                     <Spinner animation="grow" variant="warning" />
                 </div>
             )}
-            {!isLoading && (
+            {!isLoading && !instanceError && (
                 <div className={style.authentication}>
                     {action === "login" && (
                         <Login

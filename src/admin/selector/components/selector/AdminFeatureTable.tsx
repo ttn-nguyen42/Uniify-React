@@ -9,6 +9,7 @@ import { FirestoreApp } from "../../../../util/api/Firebase";
 import Spinner from "react-bootstrap/Spinner";
 import Table from "react-bootstrap/Table";
 import TabularComponent from "./components/SelectorTabularComponent";
+import ErrorPage from "../../../../pages/error_page/ErrorPage";
 
 const AdminFeatureTable = () => {
     const [data, updateData] = useState<ShortPreviewSchema[]>();
@@ -47,12 +48,13 @@ const AdminFeatureTable = () => {
 
     return (
         <div className={style.table}>
-            {isLoading && (
+            {errorOccurred && <ErrorPage />}
+            {isLoading && !errorOccurred && (
                 <div className={style.loading}>
                     <Spinner animation="grow" variant="warning" />
                 </div>
             )}
-            {!isLoading && (
+            {!isLoading && !errorOccurred && (
                 <div className={style.content}>
                     <Table striped bordered hover>
                         <thead>

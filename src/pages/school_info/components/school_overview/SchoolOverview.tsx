@@ -28,14 +28,6 @@ import { categoriesWithKey } from "../../../../util/default/DefaultOptions";
 SwiperCore.use([Mousewheel, Pagination, Navigation]);
 
 const SchoolOverview: FC<SchoolOverviewProps> = (props) => {
-    const imageArray = [
-        "https://via.placeholder.com/1280x720",
-        "https://via.placeholder.com/1280x720",
-        "https://via.placeholder.com/1280x720",
-        "https://via.placeholder.com/1280x720",
-        "https://via.placeholder.com/1280x720",
-    ];
-
     const { overview, facility, category } = props;
 
     const imageCarousel = overview.facilityImage.map((image: string) => (

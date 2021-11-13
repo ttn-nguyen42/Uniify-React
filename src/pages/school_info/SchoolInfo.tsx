@@ -19,6 +19,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { SchoolSchema } from "../../util/schema/DatabaseSchema";
 
 import Spinner from "react-bootstrap/Spinner";
+import ErrorPage from "../error_page/ErrorPage";
 
 const SchoolInfo = () => {
     const params = useParams<InfoParams>();
@@ -44,12 +45,13 @@ const SchoolInfo = () => {
 
     return (
         <Fragment>
-            {isLoading && (
+            {errorOccurred && <ErrorPage />}
+            {isLoading && !errorOccurred && (
                 <div className={style.loading}>
                     <Spinner animation="grow" variant="warning" />
                 </div>
             )}
-            {!isLoading && (
+            {!isLoading && !errorOccurred && (
                 <div className={style.info}>
                     <SchoolHeader header={receivedData!.header} />
                     <SchoolGallery gallery={receivedData!.gallery} />

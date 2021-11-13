@@ -25,7 +25,6 @@ const InfoExplorer = () => {
 
     const [data, updateData] = useState<ShortPreviewSchema[]>([]);
     const [isLoading, updateLoadingState] = useState<boolean>(true);
-    const [errorOccurred, updateError] = useState<boolean>(false);
 
     useEffect(() => {
         // Firebase connection established here
@@ -48,7 +47,6 @@ const InfoExplorer = () => {
                     updateLoadingState(false);
                 }, 500);
             } catch (error) {
-                updateError(true);
                 alert("Đã có lỗi xảy ra, vui lòng thử lại");
             }
         };

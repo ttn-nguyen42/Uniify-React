@@ -8,7 +8,7 @@ import Featured from "./components/featured/Featured";
 import Categories from "./components/categories/Categories";
 import QuickNews from "./components/news/QuickNews";
 
-import { CategoryType, QuickNewsCardType } from "../../util/types/Type";
+import { QuickNewsCardType } from "../../util/types/Type";
 import {
     collection,
     doc,

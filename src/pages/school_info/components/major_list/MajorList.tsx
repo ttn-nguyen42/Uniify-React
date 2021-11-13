@@ -7,8 +7,7 @@ import style from "./MajorList.module.scss";
 import { FC } from "react";
 import { SchoolMajorListProps } from "../../../../util/types/Interface";
 
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../../util/state/store/globalStore";
+import { useDispatch } from "react-redux";
 import { updateMajor } from "../../../../util/state/slice/schoolInfoSlice";
 
 const MajorList: FC<SchoolMajorListProps> = (props) => {
