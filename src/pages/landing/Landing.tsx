@@ -19,69 +19,7 @@ import {
     getDocs,
 } from "firebase/firestore";
 import { FirestoreApp } from "../../util/api/Firebase";
-
-const dummyListCategories: CategoryType[] = [
-    {
-        category: "Kinh tế - Tài chính",
-        description:
-            "Tổ chức điều phối các hoạt động kinh tế, quản lý, tài chính,...",
-        id: "kttc",
-    },
-    {
-        category: "Kỹ thuật - Công nghệ",
-        description:
-            "Cung cấp các giải pháp công nghệ, kỹ thuật cao cho xã hội,...",
-        id: "ktcn",
-    },
-    {
-        category: "Kinh tế - Tài chính",
-        description:
-            "Tổ chức điều phối các hoạt động kinh tế, quản lý, tài chính,...",
-        id: "kttc",
-    },
-    {
-        category: "Kinh tế - Tài chính",
-        description:
-            "Tổ chức điều phối các hoạt động kinh tế, quản lý, tài chính,...",
-        id: "kttc",
-    },
-    {
-        category: "Kinh tế - Tài chính",
-        description:
-            "Tổ chức điều phối các hoạt động kinh tế, quản lý, tài chính,...",
-        id: "kttc",
-    },
-    {
-        category: "Kinh tế - Tài chính",
-        description:
-            "Tổ chức điều phối các hoạt động kinh tế, quản lý, tài chính,...",
-        id: "kttc",
-    },
-    {
-        category: "Kinh tế - Tài chính",
-        description:
-            "Tổ chức điều phối các hoạt động kinh tế, quản lý, tài chính,...",
-        id: "kttc",
-    },
-    {
-        category: "Kinh tế - Tài chính",
-        description:
-            "Tổ chức điều phối các hoạt động kinh tế, quản lý, tài chính,...",
-        id: "kttc",
-    },
-    {
-        category: "Kinh tế - Tài chính",
-        description:
-            "Tổ chức điều phối các hoạt động kinh tế, quản lý, tài chính,...",
-        id: "kttc",
-    },
-    {
-        category: "Kinh tế - Tài chính",
-        description:
-            "Tổ chức điều phối các hoạt động kinh tế, quản lý, tài chính,...",
-        id: "kttc",
-    },
-];
+import { categoriesWithKeyAndDescription } from "../../util/default/DefaultOptions";
 
 const dummyNews: QuickNewsCardType[] = [
     {
@@ -308,7 +246,7 @@ const Landing = () => {
                 <Categories
                     heading="Theo khối ngành"
                     description="Tìm hiểu và chọn trường theo khối ngành"
-                    list={dummyListCategories}
+                    list={categoriesWithKeyAndDescription}
                 />
                 <QuickNews
                     interface={{

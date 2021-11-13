@@ -6,3 +6,10 @@
         margin-bottom: 3rem;
     }
 }
+
+.center {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+    justify-content: center;
+}

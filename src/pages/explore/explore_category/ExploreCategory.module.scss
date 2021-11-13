@@ -1,0 +1,15 @@
+.body {
+    margin: 3% 10%;
+    .flex {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.loading {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15rem;
+    height: 100vh;
+}

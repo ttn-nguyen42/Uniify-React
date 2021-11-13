@@ -10,6 +10,7 @@ import AdminFeatureSelector from "../../admin/selector/AdminFeatureSelector";
 
 import style from "./Routing.module.scss";
 import { Switch, Route } from "react-router";
+import ExploreCategory from "../../pages/explore/explore_category/ExploreCategory";
 
 const Routing = () => {
     return (
@@ -32,6 +33,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/explore/:id">
                     <SchoolInfo />
+                </Route>
+                <Route path="/category/:category">
+                    <ExploreCategory />
                 </Route>
                 <Route path="/admin" exact>
                     <DatabaseAdmin />

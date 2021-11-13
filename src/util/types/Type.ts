@@ -24,7 +24,7 @@ export type FeaturedType = {
 export type CategoryType = {
     category: string;
     description: string;
-    id: string;
+    key: string;
 };
 
 export type QuickNewsType = {

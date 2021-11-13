@@ -4,25 +4,21 @@
     overflow: scroll;
     overflow-x: hidden;
     padding-right: 8px;
+    flex: 13;
+    margin-left: 1.5rem;
     .grid {
         height: 100%;
         width: 100%;
         display: grid;
         gap: 1rem;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 300fr));
-    }
-    .loading {
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        margin-top: 15rem;
-        will-change: auto;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 350fr));
     }
     .no-result {
         display: flex;
         height: 100%;
         justify-content: center;
-        margin-top: 3rem;
+        margin-top: 15rem;
+        height: 100%;
     }
     :global(.pagination) {
         :global(.page-item) {

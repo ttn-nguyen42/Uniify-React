@@ -89,3 +89,12 @@ export interface ListTabularComponentProps {
     feature: string;
     info: ShortPreviewSchema;
 }
+
+export interface CategoryVerticalNavProps {
+    selectedCategory: string;
+}
+
+export interface CategoryInfoExplorerProps {
+    selectedCategory: string;
+    data: ShortPreviewSchema[];
+}
