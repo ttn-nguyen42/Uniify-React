@@ -20,6 +20,7 @@ import {
 } from "firebase/firestore";
 import { FirestoreApp } from "../../util/api/Firebase";
 import { categoriesWithKeyAndDescription } from "../../util/default/DefaultOptions";
+import { Spinner } from "react-bootstrap";
 
 const dummyNews: QuickNewsCardType[] = [
     {
@@ -185,78 +186,85 @@ const Landing = () => {
 
         fetchFeatureData();
         fetchViewedData();
-        updateLoadingState(false);
+        setTimeout(() => updateLoadingState(false), 1000);
     }, []);
 
     return (
         <Fragment>
-            <section className={style.marg}>
-                <div className={style.landing}>
-                    <div className={style.cta}>
-                        <h1>Cùng Uniify kiến tạo tương lai</h1>
-                        <p>
-                            Khám phá và tìm hiểu thông tin, đăng ký xét tuyển
-                            tại những trường Đại học yêu thích của mình. Hãy bắt
-                            đầu ngay bây giờ!
-                        </p>
-                        <CallToActionButton />
-                    </div>
-                    <div className={style.illustration}>
-                        <EducationSVG />
-                    </div>
+            {isLoading && (
+                <div className={style.loading}>
+                    <Spinner animation="grow" variant="warning" />
                 </div>
-                <Featured
-                    type={{
-                        heading: "Được giới thiệu",
-                        subheading: "Các trường được Uniify giới thiệu",
-                        badge: {
-                            enable: true,
-                            content: "Quảng cáo",
-                            variant: "warning",
-                        },
-                        itemList: featuredData.featured,
-                    }}
-                />
-                <Featured
-                    type={{
-                        heading: "Xem nhiều nhất",
-                        subheading:
-                            "Các trường được người dùng quan tâm nhiều nhất trên Uniify",
-                        badge: {
-                            enable: true,
-                            content: "Nổi bật",
-                            variant: "info",
-                        },
-                        itemList: mostViewedData,
-                    }}
-                />
-                <Featured
-                    type={{
-                        heading: "Đánh giá cao nhất",
-                        subheading:
-                            "Các trường được nhận được đánh giá cao nhất trong tháng",
-                        badge: {
-                            enable: true,
-                            content: "Đánh giá cao",
-                            variant: "success",
-                        },
-                        itemList: highestRatedData,
-                    }}
-                />
-                <Categories
-                    heading="Theo khối ngành"
-                    description="Tìm hiểu và chọn trường theo khối ngành"
-                    list={categoriesWithKeyAndDescription}
-                />
-                <QuickNews
-                    interface={{
-                        heading: "Tin tức mới",
-                        description:
-                            "Tìm hiểu những tin tức mới nhất liên quan đến tuyển sinh Đại học",
-                        news: dummyNews,
-                    }}
-                />
-            </section>
+            )}
+            {!isLoading && (
+                <section className={style.marg}>
+                    <div className={style.landing}>
+                        <div className={style.cta}>
+                            <h1>Cùng Uniify kiến tạo tương lai</h1>
+                            <p>
+                                Khám phá và tìm hiểu thông tin, đăng ký xét
+                                tuyển tại những trường Đại học yêu thích của
+                                mình. Hãy bắt đầu ngay bây giờ!
+                            </p>
+                            <CallToActionButton />
+                        </div>
+                        <div className={style.illustration}>
+                            <EducationSVG />
+                        </div>
+                    </div>
+                    <Featured
+                        type={{
+                            heading: "Được giới thiệu",
+                            subheading: "Các trường được Uniify giới thiệu",
+                            badge: {
+                                enable: true,
+                                content: "Quảng cáo",
+                                variant: "warning",
+                            },
+                            itemList: featuredData.featured,
+                        }}
+                    />
+                    <Featured
+                        type={{
+                            heading: "Xem nhiều nhất",
+                            subheading:
+                                "Các trường được người dùng quan tâm nhiều nhất trên Uniify",
+                            badge: {
+                                enable: true,
+                                content: "Nổi bật",
+                                variant: "info",
+                            },
+                            itemList: mostViewedData,
+                        }}
+                    />
+                    <Featured
+                        type={{
+                            heading: "Đánh giá cao nhất",
+                            subheading:
+                                "Các trường được nhận được đánh giá cao nhất trong tháng",
+                            badge: {
+                                enable: true,
+                                content: "Đánh giá cao",
+                                variant: "success",
+                            },
+                            itemList: highestRatedData,
+                        }}
+                    />
+                    <Categories
+                        heading="Theo khối ngành"
+                        description="Tìm hiểu và chọn trường theo khối ngành"
+                        list={categoriesWithKeyAndDescription}
+                    />
+                    <QuickNews
+                        interface={{
+                            heading: "Tin tức mới",
+                            description:
+                                "Tìm hiểu những tin tức mới nhất liên quan đến tuyển sinh Đại học",
+                            news: dummyNews,
+                        }}
+                    />
+                </section>
+            )}
         </Fragment>
     );
 };

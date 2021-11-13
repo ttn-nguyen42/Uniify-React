@@ -11,6 +11,7 @@ import AdminFeatureSelector from "../../admin/selector/AdminFeatureSelector";
 import style from "./Routing.module.scss";
 import { Switch, Route } from "react-router";
 import ExploreCategory from "../../pages/explore/explore_category/ExploreCategory";
+import Authentication from "../../pages/authentication/Authentication";
 
 const Routing = () => {
     return (
@@ -36,6 +37,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/category/:category">
                     <ExploreCategory />
+                </Route>
+                <Route path="/auth/:action">
+                    <Authentication />
                 </Route>
                 <Route path="/admin" exact>
                     <DatabaseAdmin />

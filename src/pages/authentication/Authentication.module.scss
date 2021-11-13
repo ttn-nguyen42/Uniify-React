@@ -1,3 +1,15 @@
 .authentication {
-    color: white;
+    display: flex;
+    justify-content: center;
+    margin: 3% 10%;
+    height: 100vh;
+    padding-top: 5%;
+}
+
+.loading {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15rem;
+    height: 100vh;
 }

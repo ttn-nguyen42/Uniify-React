@@ -1,4 +1,10 @@
-import { FeaturedType, CategoryType, QuickNewsType } from "./Type";
+import {
+    FeaturedType,
+    CategoryType,
+    QuickNewsType,
+    LoginCredential,
+    RegisterCredential,
+} from "./Type";
 
 import {
     AdmissionSchema,
@@ -97,4 +103,14 @@ export interface CategoryVerticalNavProps {
 export interface CategoryInfoExplorerProps {
     selectedCategory: string;
     data: ShortPreviewSchema[];
+}
+
+export interface LoginProps {
+    submitLoginCredential: (payload: LoginCredential) => void;
+    toggleLoading: () => void;
+}
+
+export interface RegisterProps {
+    submitRegisterCredential: (payload: RegisterCredential) => void;
+    toggleLoading: () => void;
 }

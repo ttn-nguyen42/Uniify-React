@@ -46,3 +46,15 @@ export type ChartDataType = {
     dgnl?: object[];
     xths?: object[];
 };
+
+export type LoginCredential = {
+    email: string;
+    password: string;
+    persistentLogin: boolean;
+};
+
+export type RegisterCredential = {
+    email: string;
+    password: string;
+    socialId: string;
+};
