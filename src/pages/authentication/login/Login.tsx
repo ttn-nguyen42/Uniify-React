@@ -2,6 +2,7 @@ import style from "./Login.module.scss";
 import HeaderText from "../../../components/header/header_text/HeaderText";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 
 import useForm from "../../../util/hooks/useForm";
 import { FC, SyntheticEvent, useState } from "react";
@@ -9,7 +10,7 @@ import { LoginCredential } from "../../../util/types/Type";
 import { LoginProps } from "../../../util/types/Interface";
 
 const Login: FC<LoginProps> = (props) => {
-    const { submitLoginCredential, toggleLoading } = props;
+    const { submitLoginCredential, toggleLoading, hasError, errorMessage } = props;
     const [persistentLogin, setPersistentStatus] = useState<boolean>(false);
 
     const [
@@ -62,6 +63,7 @@ const Login: FC<LoginProps> = (props) => {
 
     return (
         <div className={style.login}>
+            {hasError && <Alert variant="danger">{errorMessage}</Alert>}
             <HeaderText
                 heading="Đăng nhập"
                 desc="Hãy cùng Uniify chắp cánh cho những ước mơ của bạn"

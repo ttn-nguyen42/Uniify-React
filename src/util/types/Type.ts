@@ -56,5 +56,4 @@ export type LoginCredential = {
 export type RegisterCredential = {
     email: string;
     password: string;
-    socialId: string;
 };
