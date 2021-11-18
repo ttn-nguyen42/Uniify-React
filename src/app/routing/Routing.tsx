@@ -13,6 +13,7 @@ import { Switch, Route } from "react-router";
 import ExploreCategory from "../../pages/explore/explore_category/ExploreCategory";
 import Authentication from "../../pages/authentication/Authentication";
 import ErrorPage from "../../pages/error_page/ErrorPage";
+import DashboardFinalize from "../../pages/dashboard/finalize/DashboardFinalize";
 
 const Routing = () => {
     return (
@@ -32,6 +33,9 @@ const Routing = () => {
                 </Route>
                 <Route path="/dashboard" exact>
                     <Dashboard />
+                </Route>
+                <Route path="/dashboard/personal-info" exact>
+                    <DashboardFinalize />
                 </Route>
                 <Route path="/explore/:id">
                     <SchoolInfo />

@@ -1,0 +1,14 @@
+@import "../../../custom/mixins";
+
+.finalize {
+    margin: 3% 10%;
+}
+
+.sign-out {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.loading {
+    @include loading-style;
+}

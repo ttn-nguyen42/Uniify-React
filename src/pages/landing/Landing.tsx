@@ -120,6 +120,7 @@ const Landing = () => {
 	const [highestRatedData, updateHighestRatedData] = useState<any>([]);
 
 	useEffect(() => {
+		updateLoadingState(true);
 		const fetchFeatureData = async () => {
 			try {
 				const documentReference = doc(

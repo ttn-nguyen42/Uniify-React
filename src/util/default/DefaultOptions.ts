@@ -1,4 +1,5 @@
 export const locations = [
+    "",
     "An Giang",
     "Bà Rịa - Vũng Tàu",
     "Bắc Giang",

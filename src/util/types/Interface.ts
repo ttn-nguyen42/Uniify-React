@@ -118,7 +118,3 @@ export interface RegisterProps {
     hasError: boolean;
     errorMessage: string;
 }
-
-export interface FinalizeFormProps {
-    signOutAction: () => void;
-}

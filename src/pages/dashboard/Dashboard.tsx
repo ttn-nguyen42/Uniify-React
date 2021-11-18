@@ -10,6 +10,7 @@ import DashboardFinalize from "./finalize/DashboardFinalize";
 
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
 	const [user, updateCurrentUser] = useState<User | null>(null);
@@ -43,6 +44,7 @@ const Dashboard = () => {
 						updateDocumentState(true);
 					} else {
 						updateDocumentState(false);
+						history.push("/dashboard/personal-info");
 					}
 				} catch (error) {
 					alert("Đã có lỗi xảy ra, vui lòng thử lại");
@@ -71,12 +73,10 @@ const Dashboard = () => {
 			)}
 			{!isLoading && (
 				<div className={style.dashboard}>
-					{user !== null && !hasUserDocument && (
-						<DashboardFinalize signOutAction={signOutAction} />
-					)}
 					{user !== null && hasUserDocument && (
-						<div className={style.dashboard}>
+						<div>
 							<p>{user.uid}</p>
+							<Link to="/dashboard/personal-info">Thay đổi thông tin cá nhân</Link>
 							<Button
 								variant="outline-dark"
 								onClick={signOutAction}
