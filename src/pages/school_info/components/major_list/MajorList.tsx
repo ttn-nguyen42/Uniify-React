@@ -13,8 +13,8 @@ import { updateMajor } from "../../../../util/state/slice/schoolInfoSlice";
 const MajorList: FC<SchoolMajorListProps> = (props) => {
     const dispatch = useDispatch();
 
-    const pillClick = (major: string) => {
-        dispatch(updateMajor(major));
+    const pillClick = (chosenMajor: string) => {
+        dispatch(updateMajor(chosenMajor));
     };
 
     const { major } = props;
@@ -30,8 +30,8 @@ const MajorList: FC<SchoolMajorListProps> = (props) => {
                 desc="Các ngành học đang được giảng dạy tại trường"
             />
             <div className={style.list}>
-                {major.allMajorList.map((majorItem: string) => (
-                    <MajorPill major={majorItem} onClick={pillClick} />
+                {major.allMajorList.map((majorItem: string, index) => (
+                    <MajorPill key={index} major={majorItem} onClick={pillClick} />
                 ))}
             </div>
         </section>

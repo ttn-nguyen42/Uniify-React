@@ -4,6 +4,7 @@ import explorerReducers from "../slice/explorerSlice";
 import adminReducers from "../slice/adminFormSlice";
 import schoolInfoReducers from "../slice/schoolInfoSlice";
 import adminStateReducers from "../slice/adminStateSlice";
+import dashboardReducers from "../slice/dashboardSlice";
 
 const globalStore = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ const globalStore = configureStore({
         admin: adminReducers,
         schoolInfoNavigator: schoolInfoReducers,
         adminState: adminStateReducers,
+        dashboardState: dashboardReducers,
     },
 });
 

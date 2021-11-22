@@ -8,6 +8,8 @@ import { categoriesWithKeyAndDescription } from "../../../util/default/DefaultOp
 import CategoryVerticalNav from "./components/vertical_nav/CategoryVerticalNav";
 import CategoryInfoExplorer from "./components/info_explorer/CategoryInfoExplorer";
 
+import { useDispatch } from "react-redux";
+
 import style from "./ExploreCategory.module.scss";
 
 import Spinner from "react-bootstrap/Spinner";

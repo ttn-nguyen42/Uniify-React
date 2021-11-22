@@ -6,6 +6,8 @@ import { useHistory } from "react-router";
 import { FC } from "react";
 import { CategoryVerticalNavProps } from "../../../../../util/types/Interface";
 
+import { useParams } from "react-router";
+
 const CategoryVerticalNav: FC<CategoryVerticalNavProps> = (props) => {
     const history = useHistory();
 
@@ -18,7 +20,7 @@ const CategoryVerticalNav: FC<CategoryVerticalNavProps> = (props) => {
                 variant="pills"
                 className="flex-column"
                 onSelect={onSelectCategory}
-                defaultActiveKey={props.selectedCategory}
+                activeKey={props.selectedCategory}
             >
                 <Nav.Item>
                     <Nav.Link eventKey="kinh-doanh-kinh-te">

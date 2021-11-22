@@ -1,0 +1,22 @@
+.favorite {
+	width: 100%;
+	height: 60rem;
+	overflow: scroll;
+	overflow-x: hidden;
+	padding-right: 8px;
+	flex: 13;
+	margin-left: 1.5rem;
+	.no-result {
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		margin-top: 15rem;
+		height: 100%;
+	}
+}
+
+.center {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}

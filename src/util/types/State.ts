@@ -17,3 +17,7 @@ export type AdminState = {
     currentSelectionInternational: ShortPreviewSchema[];
     currentSelectionAssociate: ShortPreviewSchema[];
 };
+
+export type DashboardState = {
+    selectedFunctionality: string;
+}

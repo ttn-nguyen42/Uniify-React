@@ -21,6 +21,9 @@ import { SchoolSchema } from "../../util/schema/DatabaseSchema";
 import Spinner from "react-bootstrap/Spinner";
 import ErrorPage from "../error_page/ErrorPage";
 
+import { useDispatch } from "react-redux";
+import { updateMajor } from "../../util/state/slice/schoolInfoSlice";
+
 const SchoolInfo = () => {
     const params = useParams<InfoParams>();
     const [isLoading, updateLoading] = useState<boolean>(true);
@@ -29,7 +32,10 @@ const SchoolInfo = () => {
 
     const { id } = params;
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
+        dispatch(updateMajor(""));
         const asyncFetch = async () => {
             const schoolRef = doc(FirestoreApp, "schooldata", id);
             const schoolFetch = await getDoc(schoolRef);

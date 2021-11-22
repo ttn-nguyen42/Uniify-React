@@ -30,8 +30,8 @@ SwiperCore.use([Mousewheel, Pagination, Navigation]);
 const SchoolOverview: FC<SchoolOverviewProps> = (props) => {
     const { overview, facility, category } = props;
 
-    const imageCarousel = overview.facilityImage.map((image: string) => (
-        <SwiperSlide>
+    const imageCarousel = overview.facilityImage.map((image: string, index) => (
+        <SwiperSlide key={index}>
             <img src={image} alt="Hình ảnh cơ sở vật chất" />
         </SwiperSlide>
     ));

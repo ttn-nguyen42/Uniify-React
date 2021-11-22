@@ -19,3 +19,23 @@
 	margin-top: 15rem;
 	height: 100vh;
 }
+
+@mixin bootstrap-nav-style {
+	:global(.nav) {
+		:global(.nav-item) {
+			:global(.active) {
+				background-color: #ffc107 !important;
+				color: #000000 !important;
+			}
+		}
+	}
+	:global(.nav) {
+		:global(.nav-item) {
+			a {
+				color: black;
+				cursor: pointer;
+				margin: 0.25rem 0;
+			}
+		}
+	}
+}

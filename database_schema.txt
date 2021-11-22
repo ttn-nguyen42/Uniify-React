@@ -1,9 +1,0 @@
-Database Schema
-
-userdata -> UNDECIDED
-
-schooldata -> intro -> documentId
-		   -> explore -> documentId
-		   -> feature -> suggested -> documentId (intro)
-			  			 mostviewed -> documentId (intro)
-						 highestrated -> documentId (intro)

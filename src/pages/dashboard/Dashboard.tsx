@@ -6,16 +6,22 @@ import { FirebaseAuthentication, FirestoreApp } from "../../util/api/Firebase";
 import { Fragment, useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { useHistory } from "react-router";
-import DashboardFinalize from "./finalize/DashboardFinalize";
 
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import HeaderText from "../../components/header/header_text/HeaderText";
+import DashboardBody from "./components/body/DashboardBody";
+
+import { useDispatch } from "react-redux";
+import { updateSelectedFunctionality } from "../../util/state/slice/dashboardSlice";
 
 const Dashboard = () => {
 	const [user, updateCurrentUser] = useState<User | null>(null);
 	const [isLoading, updateLoadingState] = useState<boolean>(true);
 	const [hasUserDocument, updateDocumentState] = useState<boolean>(false);
+	const [userInfo, updateUserInfo] = useState<any>();
+
+	const dispatch = useDispatch();
 
 	const history = useHistory();
 
@@ -28,6 +34,7 @@ const Dashboard = () => {
 	});
 
 	useEffect(() => {
+		dispatch(updateSelectedFunctionality("favorite"));
 		const checkUserDocument = async () => {
 			// Check if there is user document
 			if (user !== null) {
@@ -41,6 +48,7 @@ const Dashboard = () => {
 						userDocumentReference
 					);
 					if (userDocumentSnapshot.exists()) {
+						updateUserInfo(userDocumentSnapshot.data());
 						updateDocumentState(true);
 					} else {
 						updateDocumentState(false);
@@ -75,8 +83,14 @@ const Dashboard = () => {
 				<div className={style.dashboard}>
 					{user !== null && hasUserDocument && (
 						<div>
-							<p>{user.uid}</p>
-							<Link to="/dashboard/personal-info">Thay đổi thông tin cá nhân</Link>
+							<HeaderText
+								heading="Trang cá nhân"
+								desc="Thay đổi, cập nhật các thông tin cá nhân của bạn tại đây"
+							/>
+							<DashboardBody
+								userId={user.uid}
+								userInfo={userInfo}
+							/>
 							<Button
 								variant="outline-dark"
 								onClick={signOutAction}

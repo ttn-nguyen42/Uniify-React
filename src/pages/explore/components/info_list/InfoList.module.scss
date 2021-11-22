@@ -9,7 +9,8 @@
         width: 100%;
         display: grid;
         gap: 1rem;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 300fr));
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: max-content;
     }
     .loading {
         display: flex;
@@ -23,20 +24,5 @@
         height: 100%;
         justify-content: center;
         margin-top: 3rem;
-    }
-    :global(.pagination) {
-        :global(.page-item) {
-            :global(.page-link) {
-                background-color: black !important;
-                color: white !important;
-                border-color: orange !important;
-            }
-        }
-        :global(.active) {
-            :global(.page-link) {
-                background-color: orange !important;
-                color: black !important;
-            }
-        }
     }
 }

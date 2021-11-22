@@ -14,6 +14,7 @@ import {
 	HeaderSchema,
 	MajorListSchema,
 	OverviewSchema,
+	SchoolSchema,
 	ShortPreviewSchema,
 } from "../schema/DatabaseSchema";
 
@@ -117,4 +118,18 @@ export interface RegisterProps {
 	toggleLoading: () => void;
     hasError: boolean;
     errorMessage: string;
+}
+
+export interface DashboardBodyProps {
+	userInfo: any;
+	userId: string;
+}
+
+export interface DashboardContentProps {
+	info: DashboardBodyProps;
+}
+
+export interface FavoriteTabularElementProps {
+	info: ShortPreviewSchema;
+	remove: (info: ShortPreviewSchema) => void;
 }

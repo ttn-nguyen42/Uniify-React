@@ -1,0 +1,6 @@
+@import "../../../../custom/mixins";
+
+.navbar {
+    @include bootstrap-nav-style;
+    flex: 3;
+}
