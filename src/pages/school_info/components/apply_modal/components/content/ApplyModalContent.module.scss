@@ -1,0 +1,17 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    .check {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+    }
+}
+
+.custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
+}

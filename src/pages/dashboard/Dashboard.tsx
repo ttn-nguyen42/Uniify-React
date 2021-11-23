@@ -61,7 +61,7 @@ const Dashboard = () => {
 			}
 		};
 		checkUserDocument();
-	}, [history, user]);
+	}, [history, user, dispatch]);
 
 	const signOutAction = async () => {
 		try {

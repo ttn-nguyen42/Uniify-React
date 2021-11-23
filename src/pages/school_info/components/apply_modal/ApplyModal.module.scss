@@ -1,0 +1,31 @@
+.loading {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 20rem;
+}
+
+.body {
+	.not-chosen {
+		margin-top: 2rem;
+		text-align: center;
+	}
+	:global(.nav) {
+		:global(.nav-item) {
+            color: #000000 !important;
+			:global(.active) {
+				background-color: #ffc107 !important;
+				color: #000000 !important;
+			}
+		}
+	}
+    	:global(.nav) {
+		:global(.nav-item) {
+			a {
+				color: black;
+				cursor: pointer;
+			}
+		}
+	}
+}

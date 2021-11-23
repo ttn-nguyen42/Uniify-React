@@ -1,0 +1,21 @@
+.general {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	height: max-content;
+	.icon {
+		vertical-align: middle;
+	}
+}
+
+.complete {
+	p {
+		color: green !important;
+	}
+}
+
+.complete {
+	p {
+		color: red;
+	}
+}

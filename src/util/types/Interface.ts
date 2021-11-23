@@ -17,6 +17,7 @@ import {
 	SchoolSchema,
 	ShortPreviewSchema,
 } from "../schema/DatabaseSchema";
+import { PersonalInformationSchema } from "../schema/PersonalInformationSchema";
 
 export interface FeatureProps {
 	type: FeaturedType;
@@ -109,15 +110,15 @@ export interface CategoryInfoExplorerProps {
 export interface LoginProps {
 	submitLoginCredential: (payload: LoginCredential) => void;
 	toggleLoading: () => void;
-    hasError: boolean;
-    errorMessage: string;
+	hasError: boolean;
+	errorMessage: string;
 }
 
 export interface RegisterProps {
 	submitRegisterCredential: (payload: RegisterCredential) => void;
 	toggleLoading: () => void;
-    hasError: boolean;
-    errorMessage: string;
+	hasError: boolean;
+	errorMessage: string;
 }
 
 export interface DashboardBodyProps {
@@ -132,4 +133,30 @@ export interface DashboardContentProps {
 export interface FavoriteTabularElementProps {
 	info: ShortPreviewSchema;
 	remove: (info: ShortPreviewSchema) => void;
+}
+
+export interface ApplyModalProps {
+	toggle: () => void;
+	userId: string | null | undefined;
+	schoolId: string;
+	isShowing: boolean;
+}
+
+export interface ApplyModalNavProps {
+	selectedMethod: string | null;
+	selectMethod: (method: string | null) => void;
+	data: SchoolSchema;
+}
+
+export interface ApplyModalContentProps {
+	selectedMethod: string;
+	apply: (method: string, userData: any, schoolId: string, userId: string) => void;
+	schoolId: string;
+	userId: string;
+	userData: any;
+}
+
+export interface CompletedCheckmarkProps {
+	completed: boolean;
+	message: string;
 }

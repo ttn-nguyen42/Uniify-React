@@ -39,7 +39,7 @@ const DashboardFavorite: FC<DashboardContentProps> = (props) => {
 			}
 		};
 		queryData();
-	}, [deletedAction]);
+	}, [deletedAction, userId]);
 
 	let tableRows: any = [];
 

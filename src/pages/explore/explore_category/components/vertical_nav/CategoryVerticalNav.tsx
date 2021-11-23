@@ -6,8 +6,6 @@ import { useHistory } from "react-router";
 import { FC } from "react";
 import { CategoryVerticalNavProps } from "../../../../../util/types/Interface";
 
-import { useParams } from "react-router";
-
 const CategoryVerticalNav: FC<CategoryVerticalNavProps> = (props) => {
     const history = useHistory();
 

@@ -25,12 +25,16 @@ import {
 	collection,
 } from "firebase/firestore";
 
+import { useDispatch } from "react-redux";
+import { toggleModal } from "../../../../util/state/slice/schoolInfoSlice";
+
 const ApplyCard: FC<ApplyPillProps> = (props) => {
 	const { contact, id, favorite } = props;
 	const [favorited, updateFavoriteState] = useState<boolean>(favorite);
 	const [user, updateUser] = useState<User | null>(null);
 
 	const history = useHistory();
+	const dispatch = useDispatch();
 
 	onAuthStateChanged(FirebaseAuthentication, (currentUser) => {
 		updateUser(currentUser);
@@ -83,8 +87,8 @@ const ApplyCard: FC<ApplyPillProps> = (props) => {
 					let previewData: any = [];
 					previewDataReceived.forEach((document) =>
 						previewData.push(document.data())
-                    );
-                    await updateDoc(userDocumentRef, {
+					);
+					await updateDoc(userDocumentRef, {
 						favorite: arrayUnion(previewData[0]),
 					});
 				}
@@ -96,7 +100,11 @@ const ApplyCard: FC<ApplyPillProps> = (props) => {
 	};
 
 	const applyHandler = () => {
-		console.log(id);
+		if (user == null) {
+			history.push("/auth/login");
+			return;
+		}
+		dispatch(toggleModal());
 	};
 
 	const contactNow = () => {

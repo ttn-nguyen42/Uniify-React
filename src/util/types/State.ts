@@ -2,6 +2,7 @@ import { ShortPreviewSchema } from "../schema/DatabaseSchema";
 
 export type SchoolInfoNavigatorState = {
     currentMajor: string;
+    modalIsShowing: boolean;
 };
 
 export type ExplorerState = {
