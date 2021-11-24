@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../util/state/store/globalStore";
 import { DashboardContentProps } from "../../../../util/types/Interface";
+import DashboardApplicationStatus from "../application_status/DashboardApplicationStatus";
 import DashboardCertificates from "../certificates/DashboardCertificates";
 import DashboardFavorite from "../favorite/DashboardFavorite";
 import DashboardPersonalInfo from "../personal_info/DashboardPersonalInfo";
@@ -19,7 +20,8 @@ const DashboardContent: FC<DashboardContentProps> = (props) => {
 			{dashboardState === "personal" && (
 				<DashboardPersonalInfo info={info} />
             )}
-            {dashboardState === "certificates" && <DashboardCertificates info={info}/>}
+			{dashboardState === "certificates" && <DashboardCertificates info={info} />}
+			{dashboardState === "applications" && <DashboardApplicationStatus info={info} />}
 		</div>
 	);
 };

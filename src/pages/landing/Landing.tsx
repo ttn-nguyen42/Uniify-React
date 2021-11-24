@@ -6,9 +6,7 @@ import { ReactComponent as EducationSVG } from "../../assets/svg/education.svg";
 import CallToActionButton from "./components/call_to_action/CallToActionButton";
 import Featured from "./components/featured/Featured";
 import Categories from "./components/categories/Categories";
-import QuickNews from "./components/news/QuickNews";
 
-import { QuickNewsCardType } from "../../util/types/Type";
 import {
 	collection,
 	doc,
@@ -21,97 +19,6 @@ import {
 import { FirestoreApp } from "../../util/api/Firebase";
 import { categoriesWithKeyAndDescription } from "../../util/default/DefaultOptions";
 import { Spinner } from "react-bootstrap";
-
-const dummyNews: QuickNewsCardType[] = [
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T11:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022 Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-	{
-		title: "Kỳ thi tuyển sinh Đại học năm 2022",
-		provider: "VnExpress",
-		imageUrl:
-			"https://hanoimoi.com.vn/Uploads/images/phananh/2021/03/28/tuyensinh.jpg",
-		url: "dummy",
-		timestamp: new Date("2021-10-15T10:13:10Z"),
-	},
-];
 
 const Landing = () => {
 	const [isLoading, updateLoadingState] = useState<boolean>(true);
@@ -255,14 +162,6 @@ const Landing = () => {
 						heading="Theo khối ngành"
 						description="Tìm hiểu và chọn trường theo khối ngành"
 						list={categoriesWithKeyAndDescription}
-					/>
-					<QuickNews
-						interface={{
-							heading: "Tin tức mới",
-							description:
-								"Tìm hiểu những tin tức mới nhất liên quan đến tuyển sinh Đại học",
-							news: dummyNews,
-						}}
 					/>
 				</section>
 			)}

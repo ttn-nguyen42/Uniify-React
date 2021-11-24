@@ -1,5 +1,4 @@
 import Explore from "../../pages/explore/Explore";
-import News from "../../pages/news/News";
 import Dashboard from "../../pages/dashboard/Dashboard";
 import About from "../../pages/about/About";
 import SchoolInfo from "../../pages/school_info/SchoolInfo";
@@ -27,9 +26,6 @@ const Routing = () => {
                 </Route>
                 <Route path="/about" exact>
                     <About />
-                </Route>
-                <Route path="/news" exact>
-                    <News />
                 </Route>
                 <Route path="/dashboard" exact>
                     <Dashboard />

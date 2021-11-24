@@ -30,10 +30,15 @@ const DashboardNavbar = () => {
 				</Nav.Item>
 				<Nav.Item>
 					<Nav.Link eventKey="personal">Cá nhân</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="certificates">Chứng chỉ</Nav.Link>
-                </Nav.Item>
+				</Nav.Item>
+				<Nav.Item>
+					<Nav.Link eventKey="certificates">Chứng chỉ</Nav.Link>
+				</Nav.Item>
+				<Nav.Item>
+					<Nav.Link eventKey="applications">
+						Tình trạng hồ sơ
+					</Nav.Link>
+				</Nav.Item>
 			</Nav>
 		</div>
 	);

@@ -2,11 +2,9 @@ import { FC, Fragment, useEffect, useState } from "react";
 import { ApplyModalProps } from "../../../../util/types/Interface";
 
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Nav from "react-bootstrap/Nav";
 
 import style from "./ApplyModal.module.scss";
-import { doc, getDoc } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, updateDoc, setDoc } from "firebase/firestore";
 import { FirestoreApp } from "../../../../util/api/Firebase";
 import ApplyModalNav from "./components/navbar/ApplyModalNav";
 import ApplyModalContent from "./components/content/ApplyModalContent";
@@ -32,7 +30,6 @@ const ApplyModal: FC<ApplyModalProps> = (props) => {
 				const documentQueryResult = await getDoc(documentRef);
 				if (documentQueryResult.exists()) {
 					updateData(documentQueryResult.data());
-					console.log(documentQueryResult.data());
 				} else {
 					updateData(null);
 					throw Error;
@@ -51,7 +48,6 @@ const ApplyModal: FC<ApplyModalProps> = (props) => {
 				const schoolDocument = await getDoc(schoolDocumentRef);
 				if (schoolDocument.exists()) {
 					updateSchoolData(schoolDocument.data());
-					console.log(schoolDocument.data());
 				} else {
 					updateSchoolData(null);
 					throw Error;
@@ -68,18 +64,72 @@ const ApplyModal: FC<ApplyModalProps> = (props) => {
 	const selectMethod = (method: string | null) => {
 		if (method !== selectedMethod) {
 			updateSelectedMethod(method);
-			console.log(method);
 		}
 	};
 
 	const applyHandler = async (
 		method: string,
 		userData: any,
-		schoolId: string,
-		userId: string
+		schid: string,
+		uid: string,
+		selectedMajor: string[]
 	) => {
-		const documentRef = doc(FirestoreApp, "applicationdata", schoolId);
-		console.log(method + userData + schoolId + userId);
+		try {
+			const schoolDocumentRef = doc(
+				FirestoreApp,
+				"applicationdata",
+				schid
+			);
+			const userDocumentRef = doc(FirestoreApp, "userdata", uid);
+			const schoolDocumentQuery = await getDoc(schoolDocumentRef);
+			const userDocumentQuery = await getDoc(userDocumentRef);
+			const majorFiltered = Array.from(new Set(selectedMajor));
+			if (schoolDocumentQuery.exists()) {
+				await updateDoc(schoolDocumentRef, {
+					applications: arrayUnion({
+						studentId: uid,
+						userData: userData,
+						selectedMajor: majorFiltered,
+						method: method,
+						status: false,
+					}),
+				});
+			} else {
+				await setDoc(schoolDocumentRef, {
+					applications: arrayUnion({
+						studentId: uid,
+						userData: userData,
+						selectedMajor: majorFiltered,
+						method: method,
+						status: false,
+					}),
+				});
+			}
+			if (userDocumentQuery.exists()) {
+				await updateDoc(userDocumentRef, {
+					applications: arrayUnion({
+						schoolId: schid,
+						schoolName: schoolData.header.schoolName,
+						selectedMajor: majorFiltered,
+						method: method,
+						status: false,
+					}),
+				});
+			} else {
+				await setDoc(userDocumentRef, {
+					applications: arrayUnion({
+						schoolId: schid,
+						schoolName: schoolData.header.schoolName,
+						selectedMajor: majorFiltered,
+						method: method,
+						status: false,
+					}),
+				});
+			}
+			toggle();
+		} catch (error) {
+			alert("Đã có lỗi xảy ra, vui lòng thử lại");
+		}
 	};
 
 	return (
@@ -118,6 +168,7 @@ const ApplyModal: FC<ApplyModalProps> = (props) => {
 											userId={userId!}
 											userData={data}
 											apply={applyHandler}
+											schoolData={schoolData}
 										/>
 									)}
 								{selectedMethod === null && (

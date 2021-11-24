@@ -1,3 +1,23 @@
 .about {
-	color: white;
+	margin: 3% 10%;
+	.intro {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		.title {
+			flex: 4;
+			display: flex;
+			flex-direction: column;
+		}
+		svg {
+			flex: 6;
+		}
+	}
+	.cta {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 5rem;
+		justify-content: center;
+	}
 }

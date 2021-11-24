@@ -5,7 +5,8 @@ const CustomTooltip: React.FC<any> = (props) => {
         console.log(props);
         return (
             <div className={style.tooltip}>
-                {props.payload.map((line: any) => {
+                {props.payload === null && <div></div>}
+                {props.payload !== null && props.payload.map((line: any) => {
                     return (
                         <div className={style["tooltip-content"]}>
                             <p

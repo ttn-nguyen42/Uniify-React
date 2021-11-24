@@ -25,16 +25,21 @@ import {
 	collection,
 } from "firebase/firestore";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../../../util/state/slice/schoolInfoSlice";
+import { RootState } from "../../../../util/state/store/globalStore";
 
 const ApplyCard: FC<ApplyPillProps> = (props) => {
 	const { contact, id, favorite } = props;
 	const [favorited, updateFavoriteState] = useState<boolean>(favorite);
 	const [user, updateUser] = useState<User | null>(null);
+	const [hasApplied, updateApplicationStatus] = useState<boolean>(false);
 
 	const history = useHistory();
 	const dispatch = useDispatch();
+	const applyModalState = useSelector(
+		(state: RootState) => state.schoolInfoNavigator.modalIsShowing
+	);
 
 	onAuthStateChanged(FirebaseAuthentication, (currentUser) => {
 		updateUser(currentUser);
@@ -60,6 +65,24 @@ const ApplyCard: FC<ApplyPillProps> = (props) => {
 						) {
 							updateFavoriteState(true);
 						}
+
+						const applicationData = data.applications;
+						if (applicationData === undefined) {
+							updateApplicationStatus(false);
+						} else {
+							const findResult = applicationData.find(
+								(application: any) =>
+									application.schoolId === id
+							);
+							if (
+								findResult === undefined ||
+								findResult === null
+							) {
+								updateApplicationStatus(false);
+							} else {
+								updateApplicationStatus(true);
+							}
+						}
 					}
 				}
 			} catch (error) {
@@ -67,7 +90,7 @@ const ApplyCard: FC<ApplyPillProps> = (props) => {
 			}
 		};
 		dataQuery();
-	}, [user, id]);
+	}, [user, id, applyModalState]);
 
 	const addToFavoriteList = async () => {
 		if (user === null) {
@@ -121,6 +144,7 @@ const ApplyCard: FC<ApplyPillProps> = (props) => {
 						size="lg"
 						className="py-3"
 						onClick={applyHandler}
+						disabled={hasApplied}
 					>
 						Nộp hồ sơ ngay
 					</Button>

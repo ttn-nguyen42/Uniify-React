@@ -150,13 +150,25 @@ export interface ApplyModalNavProps {
 
 export interface ApplyModalContentProps {
 	selectedMethod: string;
-	apply: (method: string, userData: any, schoolId: string, userId: string) => void;
+	apply: (
+		method: string,
+		userData: any,
+		schoolId: string,
+		userId: string,
+		selectedMajor: string[],
+		schoolData: any
+	) => void;
 	schoolId: string;
 	userId: string;
 	userData: any;
+	schoolData: any;
 }
 
 export interface CompletedCheckmarkProps {
 	completed: boolean;
 	message: string;
+}
+
+export interface DashboardApplicationStatusProps {
+	info: DashboardBodyProps;
 }

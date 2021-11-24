@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import { Alert, Button, Form } from "react-bootstrap";
+import React, { FC, useState } from "react";
+import { Button, Form } from "react-bootstrap";
 import CompletedCheckmark from "../../../../../../components/completed_checkmark/CompletedCheckmark";
 import { ApplyModalContentProps } from "../../../../../../util/types/Interface";
 
@@ -12,13 +12,26 @@ const classifyCompletedState = (arg: any) => {
 };
 
 const ApplyModalContent: FC<ApplyModalContentProps> = (props) => {
-	const { userId, schoolId, userData, apply, selectedMethod } = props;
+	const { userId, schoolId, userData, apply, selectedMethod, schoolData } =
+		props;
 
 	const [check, updateCheckStatus] = useState<boolean>(false);
+	const [select, updateSelectOption] = useState<string>("");
+	const [select2, updateSelectOption2] = useState<string>("");
+	const [select3, updateSelectOption3] = useState<string>("");
+	const [select4, updateSelectOption4] = useState<string>("");
+	const [select5, updateSelectOption5] = useState<string>("");
 
-    const submitHandler = () => {
-        apply(selectedMethod, userData, schoolId, userId);
-    };
+	const submitHandler = () => {
+		apply(
+			selectedMethod,
+			userData,
+			schoolId,
+			userId,
+			[select, select2, select3, select4, select5],
+			schoolData
+		);
+	};
 
 	return (
 		<div>
@@ -39,26 +52,94 @@ const ApplyModalContent: FC<ApplyModalContentProps> = (props) => {
 							message={"Học bạ cấp 3"}
 						/>
 					</div>
-					<Alert
-						variant={
-							classifyCompletedState(userData.personalInfo) &&
-							classifyCompletedState(userData.certificates.grade)
-								? "success"
-								: "danger"
-						}
-					>
-						{classifyCompletedState(userData.personalInfo) &&
-							classifyCompletedState(
-								userData.certificates.grade
-							) &&
-							"Đã đủ các thông tin cần có"}
-						{(!classifyCompletedState(userData.personalInfo) ||
-							!classifyCompletedState(
-								userData.certificates.grade
-							)) &&
-							"Vui lòng cập nhật thêm các thông tin còn thiếu"}
-					</Alert>
 					<Form>
+						<Form.Group className="mb-3">
+							<Form.Label>Nguyện vọng 1</Form.Label>
+							<Form.Select
+								value={select}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 2</Form.Label>
+							<Form.Select
+								value={select2}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption2(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 3</Form.Label>
+							<Form.Select
+								value={select3}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption3(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 4</Form.Label>
+							<Form.Select
+								value={select4}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption4(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 5</Form.Label>
+							<Form.Select
+								value={select5}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption5(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+						</Form.Group>
 						<Form.Group className="mb-3">
 							<Form.Check
 								checked={check}
@@ -71,13 +152,15 @@ const ApplyModalContent: FC<ApplyModalContentProps> = (props) => {
 						</Form.Group>
 					</Form>
 					<Button
-						variant="success"
+						variant="warning"
 						disabled={
 							!(
 								classifyCompletedState(userData.personalInfo) &&
 								classifyCompletedState(
 									userData.certificates.grade
-								)
+								) &&
+								check &&
+								select.length !== 0
 							)
 						}
 						onClick={submitHandler}
@@ -117,37 +200,94 @@ const ApplyModalContent: FC<ApplyModalContentProps> = (props) => {
 							message={"Chứng chỉ ngoại ngữ"}
 						/>
 					</div>
-					<Alert
-						variant={
-							classifyCompletedState(userData.personalInfo) &&
-							classifyCompletedState(
-								userData.certificates.grade
-							) &&
-							classifyCompletedState(
-								userData.certificates.language
-							)
-								? "success"
-								: "danger"
-						}
-					>
-						{classifyCompletedState(userData.personalInfo) &&
-							classifyCompletedState(
-								userData.certificates.grade
-							) &&
-							classifyCompletedState(
-								userData.certificates.language
-							) &&
-							"Đã đủ các thông tin cần có"}
-						{!classifyCompletedState(userData.personalInfo) ||
-							!classifyCompletedState(
-								userData.certificates.grade
-							) ||
-							(!classifyCompletedState(
-								userData.certificates.language
-							) &&
-								"Vui lòng cập nhật thêm các thông tin còn thiếu")}
-					</Alert>
 					<Form>
+						<Form.Group className="mb-3">
+							<Form.Label>Nguyện vọng 1</Form.Label>
+							<Form.Select
+								value={select}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 2</Form.Label>
+							<Form.Select
+								value={select2}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption2(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 3</Form.Label>
+							<Form.Select
+								value={select3}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption3(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 4</Form.Label>
+							<Form.Select
+								value={select4}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption4(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 5</Form.Label>
+							<Form.Select
+								value={select5}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption5(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+						</Form.Group>
 						<Form.Group className="mb-3">
 							<Form.Check
 								checked={check}
@@ -160,7 +300,7 @@ const ApplyModalContent: FC<ApplyModalContentProps> = (props) => {
 						</Form.Group>
 					</Form>
 					<Button
-						variant="success"
+						variant="warning"
 						disabled={
 							!(
 								classifyCompletedState(userData.personalInfo) &&
@@ -169,7 +309,9 @@ const ApplyModalContent: FC<ApplyModalContentProps> = (props) => {
 								) &&
 								classifyCompletedState(
 									userData.certificates.language
-								)
+								) &&
+								check &&
+								select.length !== 0
 							)
 						}
 						onClick={submitHandler}
@@ -195,28 +337,94 @@ const ApplyModalContent: FC<ApplyModalContentProps> = (props) => {
 							message={"Chứng chỉ quốc tế"}
 						/>
 					</div>
-					<Alert
-						variant={
-							classifyCompletedState(userData.personalInfo) &&
-							classifyCompletedState(
-								userData.certificates.education
-							)
-								? "success"
-								: "danger"
-						}
-					>
-						{classifyCompletedState(userData.personalInfo) &&
-							classifyCompletedState(
-								userData.certificates.education
-							) &&
-							"Đã đủ các thông tin cần có"}
-						{!classifyCompletedState(userData.personalInfo) ||
-							(!classifyCompletedState(
-								userData.certificates.education
-							) &&
-								"Vui lòng cập nhật thêm các thông tin còn thiếu")}
-					</Alert>
 					<Form>
+						<Form.Group className="mb-3">
+							<Form.Label>Nguyện vọng 1</Form.Label>
+							<Form.Select
+								value={select}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 2</Form.Label>
+							<Form.Select
+								value={select2}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption2(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 3</Form.Label>
+							<Form.Select
+								value={select3}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption3(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 4</Form.Label>
+							<Form.Select
+								value={select4}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption4(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+							<Form.Label>Nguyện vọng 5</Form.Label>
+							<Form.Select
+								value={select5}
+								onChange={(
+									event: React.ChangeEvent<HTMLSelectElement>
+								) => {
+									updateSelectOption5(event.target.value);
+								}}
+							>
+								{["", ...schoolData.major.allMajorList].map(
+									(maj: string, index) => (
+										<option value={maj} key={index}>
+											{maj}
+										</option>
+									)
+								)}
+							</Form.Select>
+						</Form.Group>
 						<Form.Group className="mb-3">
 							<Form.Check
 								checked={check}
@@ -229,13 +437,15 @@ const ApplyModalContent: FC<ApplyModalContentProps> = (props) => {
 						</Form.Group>
 					</Form>
 					<Button
-						variant="success"
+						variant="warning"
 						disabled={
 							!(
 								classifyCompletedState(userData.personalInfo) &&
 								classifyCompletedState(
 									userData.certificates.education
-								)
+								) &&
+								check &&
+								select.length !== 0
 							)
 						}
 						onClick={submitHandler}

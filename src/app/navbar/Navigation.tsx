@@ -34,9 +34,6 @@ const Navigation = () => {
 						<Nav.Link as={NavLink} to="/about">
 							Giới thiệu
 						</Nav.Link>
-						<Nav.Link as={NavLink} to="/news">
-							Tin tức
-						</Nav.Link>
 						{isLoggedIn && (
 							<Nav.Link as={NavLink} to="/dashboard">
 								Cá nhân
